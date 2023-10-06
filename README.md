@@ -60,3 +60,30 @@ Code and analysis should be easy to replicate for other types of destinations - 
 - argmument against rinks - lack of summer activity - but are often used in summer for other activities (pickle ball, lacrosse, basketball, bike polo)
 - what is the cost per rink? if new
 
+
+
+
+
+# Outline
+
+A) Introduction
+- Why skating rinks are important, cite 2-4 pieces of key literature/new articles
+- Briefly on history of skating rinks in Toronto, how many are there? what do they offer (public skating/hockey/classes/can be booked for activities)
+
+B) Mapping access to rinks
+- Show and describe maps of access to skating rinks
+-- 3 maps - 1 for walk, 2 for transit (weekday and weekend)
+-- Maybe make this as a toggle/button to switch between the two?
+-- Maybe add a toggle button to hide/show only those rinks that also have times for ice hockey (optional)
+- Briefly describe how the maps were made (e.g. GIS and routing details, but not super technical)
+
+C) Inequalities in access to rinks
+- Show 4 small-multiple choropleth maps, overlaid with the locations of skating rinks
+--- Population, low-income, visible minority, and recent immigrants
+- Summary table (or maybe a stacked bar chart) for the % of each of the 4 groups that can reach a rink within each of the intervals shown in the maps in B
+- Summary table (or bar chart) of the average travel time to access skating rinks for each population group 
+
+D) Inequalities in coverage 
+- Based on city plans, there should be 1 rink for every 100,000 residents
+- Show a voronoi map (based on hexagons) of the 'catchment areas' to each rink
+--- include the number of people i.e. total population within each catchment area (maybe just as shaded on the map, or as a label)
