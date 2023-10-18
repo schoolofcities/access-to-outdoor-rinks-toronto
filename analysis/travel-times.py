@@ -9,20 +9,20 @@ import r5py
 import datetime
 
 #Bring in the geojson files for rinks and hex_grid
-rinks = gpd.read_file("analysis/data/rinks.geojson")
+rinks = gpd.read_file("data/rinks_2.geojson")
 #Data must contain an ID column
 rinks["id"] = rinks._id
 
-hex_grid = gpd.read_file("analysis/data/hex-grid-centroids.geojson")
+hex_grid = gpd.read_file("data/hex-grid-centroids.geojson")
 
 #Create transport network
-transport_network = r5py.TransportNetwork("data/osm/Toronto.osm.pbf",["data/TTC/gtfs.zip"])
+transport_network = r5py.TransportNetwork("data/osm/Toronto.osm.pbf",["data/ttc/gtfs.zip"])
 
 #Compute travel time matrix for walking and transit on a weekday at 6:30pm
 from r5py import TransportMode
 travel_time_matrix_computer = r5py.TravelTimeMatrixComputer(
     transport_network,origins=rinks,destinations=hex_grid,
-    departure=datetime.datetime(2023,9,6,18,30), 
+    departure=datetime.datetime(2023,10,10,18,30), 
     transport_modes=[TransportMode.WALK, TransportMode.TRANSIT], speed_walking=4.5)
 #Build travel time matrix (for each hex to each ring)
 travel_time_matrix = travel_time_matrix_computer.compute_travel_times()
@@ -39,7 +39,7 @@ min_tt_wt_630.to_csv("data/travel_time/access-min-travel-time.csv")
 from r5py import TransportMode
 travel_time_matrix_computer_walk = r5py.TravelTimeMatrixComputer(
     transport_network,origins=rinks,destinations=hex_grid,
-    departure=datetime.datetime(2023,9,6,18,30),
+    departure=datetime.datetime(2023,10,10,18,30),
     transport_modes=[TransportMode.WALK], speed_walking=4.5)
 #Build travel time matrix - walking (for each hex to each ring)
 travel_time_matrix_walk = travel_time_matrix_computer_walk.compute_travel_times()
@@ -56,7 +56,7 @@ min_tt_walk.to_csv("data/travel_time/min_walking_travel_time")
 #Compute travel time matrix for transit ONLY on a weekday at 6:30pm
 travel_time_matrix_computer_transit_weekday = r5py.TravelTimeMatrixComputer(
     transport_network,origins=rinks,destinations=hex_grid,
-    departure=datetime.datetime(2023,9,6,18,30),
+    departure=datetime.datetime(2023,10,10,18,30),
     transport_modes=[TransportMode.TRANSIT], speed_walking=4.5)
 #Build travel time matrix - transit on a weekday (for each hex to each ring)
 travel_time_matrix_computer_transit_weekday = travel_time_matrix_computer_transit_weekday.compute_travel_times()
@@ -73,7 +73,7 @@ min_tt_transit_weekday.to_csv("data/travel_time/min_transit_travel_time")
 #Compute travel time matrix for transit on a weekend at 2:30pm
 travel_time_matrix_computer_transit_weekend = r5py.TravelTimeMatrixComputer(
     transport_network,origins=rinks,destinations=hex_grid,
-    departure=datetime.datetime(2023,9,9,14,30), 
+    departure=datetime.datetime(2023,10,14,14,30), 
     transport_modes=[TransportMode.TRANSIT], speed_walking=4.5)
 #Build travel time matrix - transit on a weekend (for each hex to each ring)
 travel_time_matrix_computer_transit_weekend = travel_time_matrix_computer_transit_weekend.compute_travel_times()

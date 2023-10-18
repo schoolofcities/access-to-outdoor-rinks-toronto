@@ -23,12 +23,13 @@ for idx, resource in enumerate(package["result"]["resources"]):
         print(resource_metadata)
         # From here, you can use the "url" attribute to download this file
 
-import zipfile, io
+import requests, zipfile, io
 
+#Download data with API
 r = requests.get(url)
-z = zipfile.ZipFile(io.BytesIO(r.content))
-#Uncomment the follow line to extract the zipfile
-# z.extractall("data/TTC")
-
 with open (r"data/TTC/gtfs.zip", mode="wb") as file:
     file.write(r.content)
+
+#Extract gtfs zipfile
+z = zipfile.ZipFile(io.BytesIO(r.content))
+z.extractall("analysis/data/ttc")
