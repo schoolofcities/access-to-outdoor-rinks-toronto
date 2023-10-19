@@ -2,3 +2,5 @@ analysis/data/osm
 analysis/__pycache__
 data
 node_modules
+.ipynb_checkpoints
+analysis/.ipynb_checkpoints
