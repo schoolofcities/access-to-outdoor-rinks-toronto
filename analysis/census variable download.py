@@ -16,13 +16,22 @@ df2 = df2.set_index(["GeoUID"]).rename(columns={
     "v_CA21_4875: Total visible minority population":"# of Visible Minority"})
 df2 = df2.drop(columns=["Type", "Region Name", "Area (sq km)", "Population ", "Dwellings ", "Households "])
 
+#Data file 3-Population in Low Income Household measured by LIM
+df3= pd.read_csv("data/census/data(3).csv")
+#Rename column, set GEOUID as index, and remove duplicate columns
+df3=df3.set_index(["GeoUID"]).rename(columns={
+    "v_CA21_1025: In low income based on the Low-income measure, after tax (LIM-AT)":"Low Income Population"
+})
+df3=df3.drop(columns=["Type", "Region Name", "Area (sq km)", "Population ", "Dwellings ", "Households "])
+
 #Combine both dfs into one df
-census = df1.join(df2, how="left")
+census=pd.concat([df1,df2,df3], axis=1)
 census.replace(0, np.nan, inplace=True) #to debug zero float division error
 
 #Calculate immigrant and visible miniority percentages
 census["Immigrant%"] = census.apply(lambda x: x["# of Immigrants"]/x["Population "]*100, axis=1)
 census["Visible Minority%"] = census.apply(lambda x: x["# of Visible Minority"]/x["Population "]*100, axis =1)
+census["Visible Minority Density"]= census.apply(lambda x: x["# of Visible Minority"]/x["Area (sq km)"], axis =1)
 
 #Calculate population density, immigrant density, visible minority density
 census["Population Density"] = census.apply(lambda x: x["Population "]/x["Area (sq km)"], axis =1)

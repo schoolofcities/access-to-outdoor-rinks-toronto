@@ -9,7 +9,7 @@ import r5py
 import datetime
 
 #Bring in the geojson files for rinks and hex_grid
-rinks = gpd.read_file("data/rinks_2.geojson")
+rinks = gpd.read_file("data/rinks.geojson")
 #Data must contain an ID column
 rinks["id"] = rinks._id
 
