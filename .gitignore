@@ -1,3 +1,9 @@
 analysis/data/osm
 analysis/__pycache__
+analysis/data/ttc
+analysis/data/osm
+analysis/data/toronto_da
+analysis/data/travel_time
 node_modules
+.ipynb_checkpoints
+analysis/.ipynb_checkpoints
