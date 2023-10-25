@@ -41,6 +41,11 @@
 		});
 		map.addControl(scale, 'bottom-right');
 
+		map.dragRotate.disable();
+		map.touchZoomRotate.disableRotation();
+
+
+
 		map.addSource('raster-tiles', {
 			'type': 'raster',
 			'tiles': ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
@@ -77,6 +82,7 @@
 <div id="map" style="height: {mapHeight}px">
 
 </div>
+<p>Data Sources: OpenStreetMap, City of Toronto</p>
 
 
 
@@ -89,5 +95,12 @@
 		border-top: 1px solid var(--brandMedBlue);
 		border-bottom: 1px solid var(--brandMedBlue);
 		background-color: white;
+	}
+	p {
+		margin: 0 auto;
+		text-align: right;
+		font-size: 10px;
+		max-width: 1200px;
+		color: var(--brandMedBlue);
 	}
 </style>
