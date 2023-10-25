@@ -1,6 +1,8 @@
 <script>
 
     import TopSofC from "../lib/TopSofC.svelte";
+    import HexAccessMap from "../lib/HexAccessMap.svelte";
+
     import "../assets/global-styles.css";
     import topImage from '../assets/top-image.png'
     
@@ -32,7 +34,11 @@
             Below we've created a map showing the locations of outdoor skating rinks, with the background coloured by the travel time in each neighbourhood to the nearest skating rink. This is a type of <a href="">isochrone map</a>. 
         </p>
 
-        <p>INSERT LARGE HEX MAP HERE</p>
+    </div>
+
+    <HexAccessMap/>    
+
+    <div class="text">
 
         <p>
             Briefly describe map here, patterns, etc.
