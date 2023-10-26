@@ -46,6 +46,7 @@
 
 		map.dragRotate.disable();
 		map.touchZoomRotate.disableRotation();
+		map.scrollZoom.disable();
 
 
 		map.addSource('hexGrid', {
