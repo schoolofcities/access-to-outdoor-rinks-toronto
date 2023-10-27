@@ -1,0 +1,161 @@
+@font-face {
+    font-family: TradeGothicBold;
+    src: url("Trade Gothic LT Bold.ttf");
+}
+
+@font-face {
+    font-family: RobotoRegular;
+    src: url("roboto/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: RobotoBold;
+    src: url("roboto/Roboto-Bold.ttf");
+}
+
+@font-face {
+    font-family: Bembo;
+    src: url("BemboStd.otf");
+}
+
+:root {
+    font-family: Roboto, sans-serif;
+    --brandDarkBlue: #1E3765;
+    --brandMedBlue: #007FA3;
+    --brandLightBlue: #6FC7EA;
+    --brandPurple: #6D247A;
+    --brandPink: #AB1368;
+    --brandDarkGreen: #0D534D;
+    --brandMedGreen: #00A189;
+    --brandLightGreen: #8DBF2E;
+    --brandRed: #DC4633; 
+    --brandYellow: #F1C500;
+    --brandBlack: #000000;
+    --brandWhite: #ffffff;
+    --brandGray: #D0D1C9;
+    --brandGray70: #4d4d4d;
+    --brandGray80: #333333;
+    --brandGray90: #191919;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    background-color: var(--brandWhite);
+}
+
+main {
+    margin: 0 auto;
+    padding: 0px;
+    width: calc(100%);
+    min-width: 400px;
+    max-width: 1920px;
+    margin-bottom: 100px;
+    position: relative;
+    background:
+      repeating-linear-gradient( 45deg,#0000 calc(-650%/13) calc(50%/13),#ffffff 0 calc(100%/13),
+      #0000 0 calc(150%/13),#ffffff 0 calc(200%/13),
+      #0000 0 calc(250%/13),#ffffff 0 calc(300%/13)),repeating-linear-gradient( 45deg,#0000 calc(-650%/13) calc(50%/13),#ffffff 0 calc(100%/13),
+      #0000 0 calc(150%/13),#ffffff 0 calc(200%/13),
+      #0000 0 calc(250%/13),#ffffff 0 calc(300%/13)) 26px 26px,
+      repeating-linear-gradient(-45deg,#0000 calc(-650%/13) calc(50%/13),#ffffff 0 calc(100%/13),
+      #0000 0 calc(150%/13),#ffffff 0 calc(200%/13),
+      #0000 0 calc(250%/13),#ffffff 0 calc(300%/13)),repeating-linear-gradient(-45deg,#0000 calc(-650%/13) calc(50%/13),#ffffff 0 calc(100%/13),
+      #0000 0 calc(150%/13),#ffffff 0 calc(200%/13),
+      #0000 0 calc(250%/13),#ffffff 0 calc(300%/13)) 26px 26px #fbfdff;
+background-size: 52px 52px;
+
+
+}
+
+.title {
+    background-color: none;
+    max-width: 750px;
+    margin: 0 auto;
+    margin-bottom: 0px;
+    border-bottom: dashed 1px var(--brandRed);
+    position: relative;
+    /* padding-left: 15px;
+    padding-right: 15px; */
+}
+
+.text {
+    background-color: none;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+h1 {
+    font-family: TradeGothicBold;
+    font-size: 34px;
+    color: var(--brandMedBlue);
+    border-bottom: solid 1px var(--brandMedBlue);
+    text-decoration: none;
+    margin-bottom: 20px;
+    padding: 0px;
+}
+
+h2 {
+    text-align: left;
+    font-family: TradeGothicBold;
+    font-size: 22px;
+    border-bottom: solid 1px var(--brandDarkBlue);
+    margin-top: 0px;
+    color: var(--brandDarkBlue);
+}
+
+h3 {
+    text-align: left;
+    font-family: TradeGothicBold;
+    font-size: 22px;
+    text-decoration: underline;
+    color: var(--brandDarkBlue);
+}
+
+p {
+    font-family: RobotoRegular;
+    color: var(--brandDarkBlue);
+    text-align: left;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.bold {
+    background-color: var(--brandPurple);
+    font-family: RobotoBold;
+}
+
+.note {
+    margin-top: -12px;
+    font-size: 14px;
+}
+
+a {
+    color: var(--brandPink);
+    text-decoration: underline;
+    font-family: RobotoBold;
+
+}
+a:hover {
+    color: var(--brandLightBlue);
+}
+
+.topImg {
+    width: 100%;
+    max-width: 1920px;
+    height: calc(100vh - 20px);
+    max-height: calc(100vh / 1.333);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: 1px solid var(--brandMedBlue);
+}
+
+/* @media only screen and (max-width: 1920px) {
+    .topImg {
+        background-attachment: fixed;
+    }
+} */

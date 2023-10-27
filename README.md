@@ -62,8 +62,6 @@ Code and analysis should be easy to replicate for other types of destinations - 
 
 
 
-
-
 # Outline
 
 A) Introduction
@@ -73,17 +71,26 @@ A) Introduction
 B) Mapping access to rinks
 - Show and describe maps of access to skating rinks
 -- 3 maps - 1 for walk, 2 for transit (weekday and weekend)
--- Maybe make this as a toggle/button to switch between the two?
--- Maybe add a toggle button to hide/show only those rinks that also have times for ice hockey (optional)
+-- -- Replicate the 'large' maps on this page (https://schoolofcities.github.io/place-and-politics-toronto/mapping-the-2023-mayoral-election)
+-- Add a toggle/button to switch between the two
 - Briefly describe how the maps were made (e.g. GIS and routing details, but not super technical)
+-- Maybe add a toggle button to hide/show only those rinks that also have times for ice hockey (optional for now, maybe do at the end if we have time)
+
+Data required:
+- hex grid geojson with joined data (3 columns)
+- former 6 municipality borders
+- rink locations geojson
+- rapid transit
 
 C) Inequalities in access to rinks
-- Show 4 small-multiple choropleth maps, overlaid with the locations of skating rinks
+- Show 4 small-multiple choropleth maps, overlaid with the locations of skating rinks (replicate the 4 small multiple maps on this page - https://schoolofcities.github.io/place-and-politics-toronto/torontos-two-rights)
 --- Population, low-income, visible minority, and recent immigrants
+- Table or simple chart of the average travel time to access skating rinks for each population group 
 - Summary table (or maybe a stacked bar chart) for the % of each of the 4 groups that can reach a rink within each of the intervals shown in the maps in B
-- Summary table (or bar chart) of the average travel time to access skating rinks for each population group 
+
+Optional for now - let's do the above first
 
 D) Inequalities in coverage 
 - Based on city plans, there should be 1 rink for every 100,000 residents
-- Show a voronoi map (based on hexagons) of the 'catchment areas' to each rink
+- Show a voronoi map (based on hexagons) of the 'catchment areas' to each rink (same template as the map in B)
 --- include the number of people i.e. total population within each catchment area (maybe just as shaded on the map, or as a label)
