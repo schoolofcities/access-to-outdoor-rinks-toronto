@@ -6,6 +6,7 @@
 	import rinks from '../assets/toronto-rinks.geo.json';
 	import municipalBoundaries from '../assets/toronto-former-municipal-boundaries.geo.json';
 	import hexGrid from '../assets/toronto-hex-grid.geo.json';
+	import walkTime from "../assets/walk_time.geo.json";
 	import notToronto from '../assets/toronto-not.geo.json';
 
 	let pageHeight;
@@ -36,39 +37,47 @@
 			projection: 'globe',
 			scrollZoom: true,
 			attributionControl: false,
+			showZoom: true,
 		});
 
 		let scale = new maplibregl.ScaleControl({
 			maxWidth: 100,
 			unit: 'metric',
 		});
+
+		let nav = new maplibregl.NavigationControl({
+			showZoom: true, 
+			showCompass: true,
+		});
+
 		map.addControl(scale, 'bottom-right');
+		map.addControl(nav, 'top-right'); //add the zoom button panel to the map
 
 		map.dragRotate.disable();
 		map.touchZoomRotate.disableRotation();
 		map.scrollZoom.disable();
 
-
-		map.addSource('hexGrid', {
+		map.addSource('walkTime',{
 			type: 'geojson',
-			data: hexGrid
+			data: walkTime
 		})
 		map.addLayer({
-			'id': 'hexGrid',
+			'id': 'walkTime',
 			'type': 'fill',
-			'source': 'hexGrid',
+			'source': 'walkTime',
 			'paint': {
 				'fill-color': [
 					'step',
-					['get', 'id'],
-					'#e7f8ff', 10000, 
-					'#8dd3ef', 20000, 
-					'#6e8ac0', 30000, 
-					'#6d559c', 40000,
-					'#6d247a' 
+					['get', 'walk_real'],
+					"#FF0000",
+					0, "#f1eef6",
+					15, '#bdc9e1',
+					30, '#74a9cf',
+					45, '#2b8cbe',
+					60, '#045a8d',
 				],
 				'fill-opacity': 0.75,
-				'fill-outline-color': 'white',
+				// 'fill-outline-color': 'white',
 			}
 		})
 

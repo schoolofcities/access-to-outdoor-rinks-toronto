@@ -23,7 +23,6 @@
         <p>
             Cities with colder climates, like many in Canada, 
 
-
             - Why skating rinks are important, cite 2-4 pieces of key literature/new articles
             - Briefly on history of skating rinks in Toronto, how many are there? what do they offer (public skating/hockey/classes/can be booked for activities)
         </p>
@@ -36,7 +35,7 @@
 
     </div>
 
-    <HexAccessMap/>    
+    <HexAccessMap/> 
 
     <div class="text">
 
