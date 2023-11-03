@@ -1,12 +1,12 @@
 <script>
 
 	import { onMount } from 'svelte';
-	import maplibregl from 'maplibre-gl';
+	import maplibregl, { LineBucket } from 'maplibre-gl';
 	import "../assets/maplibre-gl.css";
 	import rinks from '../assets/toronto-rinks.geo.json';
 	import municipalBoundaries from '../assets/toronto-former-municipal-boundaries.geo.json';
 	import hexGrid from '../assets/toronto-hex-grid.geo.json';
-	import walkTime from "../assets/walk_time.geo.json";
+	import travelTime from "../assets/walk_time.geo.json";
 	import notToronto from '../assets/toronto-not.geo.json';
 
 	let pageHeight;
@@ -57,18 +57,71 @@
 		map.touchZoomRotate.disableRotation();
 		map.scrollZoom.disable();
 
-		map.addSource('walkTime',{
+		map.addSource('TravelTime',{
 			type: 'geojson',
-			data: walkTime
+			data: travelTime
 		})
+
+		//layer - travel time by walking
 		map.addLayer({
 			'id': 'walkTime',
 			'type': 'fill',
-			'source': 'walkTime',
+			'source': 'TravelTime',
+			'layout': {
+				visibility: 'visible'
+			},
 			'paint': {
 				'fill-color': [
 					'step',
 					['get', 'walk_real'],
+					"#FF0000",
+					0, "#f1eef6",
+					15, '#bdc9e1',
+					30, '#74a9cf',
+					45, '#2b8cbe',
+					60, '#045a8d',
+				],
+				'fill-opacity': 0.75,
+				// 'fill-outline-color': 'white',
+			}
+		})
+
+		//layer - travel time by transit - weekday
+		map.addLayer({
+			'id': 'transitWeekday',
+			'type': 'fill',
+			'source': 'TravelTime',
+			'layout': {
+				visibility: 'visible'
+			},
+			'paint': {
+				'fill-color': [
+					'step',
+					['get', 'transit_wd_real'],
+					"#FF0000",
+					0, "#f1eef6",
+					15, '#bdc9e1',
+					30, '#74a9cf',
+					45, '#2b8cbe',
+					60, '#045a8d',
+				],
+				'fill-opacity': 0.75,
+				// 'fill-outline-color': 'white',
+			}
+		})
+
+		//layer - travel time by transit - weekend
+		map.addLayer({
+			'id': 'transitWeekend',
+			'type': 'fill',
+			'source': 'TravelTime',
+			'layout': {
+				visibility: 'visible'
+			},
+			'paint': {
+				'fill-color': [
+					'step',
+					['get', 'transit_we_real'],
 					"#FF0000",
 					0, "#f1eef6",
 					15, '#bdc9e1',
@@ -121,28 +174,84 @@
 			'type': 'line',
 			'source': 'municipalBoundaries',
 			'paint': {
-				'line-color': '#007FA3'
+				'line-color': '#7d979e'
 			}
 		})
 
 		map.addSource('rinks', {
-				type: 'geojson',
-				data: rinks
-			})
-			map.addLayer({
-				'id': 'rinks',
-				'type': 'circle',
-				'source': 'rinks',
-			})
+			type: 'geojson',
+			data: rinks
+		})
+		map.addLayer({
+			'id': 'rinks',
+			'type': 'circle',
+			'source': 'rinks',
+			'paint': {
+				"circle-color": "#6D247A",
+				"circle-radius" : 3.5
+			}
+		})
 
+		map.on('load', () => {
+			const toggleableLayerIds = {"walkTime": "Walk", "transitWeekday": "Transit (Weekday)", "transitWeekend": "Transit (Weekend)"};
+
+			for (const id in toggleableLayerIds) {
+
+				if(!map.getLayer(id)) {
+					continue;
+				}
+	
+				//create a link
+				const link = document.createElement("a");
+				link.id = id;
+				link.href = "#";
+				link.textContent = toggleableLayerIds[id];
+				if (id === "walkTime") {
+					link.className = "active";
+				}
+				
+
+				//show or hide layer when the toggle is clicked
+				link.onclick = function (e) {
+					const clickedLayer = this.id;
+					e.preventDefault();
+					e.stopPropagation();
+
+					// Set clicked button to active and show map layer
+					this.className = "active";
+					map.setLayoutProperty(clickedLayer, 
+						'visibility', 
+						'visible'
+					);
+					
+					// For others, set button not active and map layers not shown
+					for(const other in toggleableLayerIds) {
+						if (other === clickedLayer) {
+							continue;
+						}
+
+						const button = document.getElementById(other);
+						button.className = " "
+						map.setLayoutProperty(other, 
+							'visibility', 
+							'none'
+						);
+					}
+				};
+				const layers = document.getElementById('menu');
+				layers.appendChild(link);
+			}
+
+
+		})
 	});
+
 
 </script>
 
-
-
-
 <svelte:window bind:innerHeight={pageHeight} bind:innerWidth={pageWidth}/>
+
+<nav id="menu"></nav>
 
 <p>
 	15, 30, 45, 60
@@ -151,9 +260,6 @@
 <div id="map" style="height: {mapHeight}px"></div>
 
 <p>Data Sources: OpenStreetMap, City of Toronto</p>
-
-
-
 
 <style>
 	#map {
@@ -171,4 +277,41 @@
 		max-width: 1200px;
 		color: var(--brandMedBlue);
 	}
+	#menu {
+		background: #fff;
+		position: relative;
+		z-index: 1;
+		top: 10px;
+		right: 10px;
+		border-radius: 3px;
+		width: 120px;
+		border: 1px solid var(--brandGray);
+		font-family: 'Open Sans', sans-serif;
+	}
+	#menu :global(a) {
+		font-size: 13px;
+		color: var(--brandDarkBlue);
+		display: block;
+		margin: 0;
+		padding: 0;
+		padding: 10px;
+		text-decoration: none;
+		border-bottom: 1px solid var(--brandGray);
+		text-align: center;
+	}
+	#menu :global(a):last-child {
+	border: none;
+	}
+	#menu :global(a):hover {
+	background-color: var(--brandDarkBlue);
+	color: var(--brandWhite);
+	}
+	#menu :global(a.active) {
+	background-color: var(--brandMedBlue);
+	color: var(--brandWhite);
+	}
+	#menu :global(a.active):hover {
+	background: var(--brandDarkBlue);
+	}
+
 </style>
