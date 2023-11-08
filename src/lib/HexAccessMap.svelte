@@ -8,6 +8,8 @@
 	import hexGrid from '../assets/toronto-hex-grid.geo.json';
 	import travelTime from "../assets/walk_time.geo.json";
 	import notToronto from '../assets/toronto-not.geo.json';
+	import subwayLines from '../assets/subway_lines.geo.json';
+	import busRoutes from '../assets/bus_routes.geo.json';
 
 	let pageHeight;
 	let pageWidth;
@@ -131,6 +133,39 @@
 				],
 				'fill-opacity': 0.75,
 				// 'fill-outline-color': 'white',
+			}
+		})
+		map.addSource('subway',{
+			type: 'geojson',
+			data : subwayLines
+		})
+		map.addLayer({
+			'id': 'subway',
+			'type': 'line',
+			'source': 'subway',
+			'layout':{
+				visibility: "visible"
+			},
+			'paint': {
+				'line-color': "#4d4d4d",
+				'line-width': 1.5
+			}
+		})
+
+		map.addSource('bus',{
+			type: 'geojson',
+			data : busRoutes
+		})
+		map.addLayer({
+			'id': 'bus',
+			'type': 'line',
+			'source': 'bus',
+			'layout':{
+				visibility: "none"
+			},
+			'paint': {
+				'line-color': "#D0D1C9",
+				'line-width': 0.1
 			}
 		})
 
@@ -280,28 +315,27 @@
 	#menu {
 		background: #fff;
 		position: relative;
+		margin: 160px;
+		display: inline;
 		z-index: 1;
 		top: 10px;
 		right: 10px;
-		border-radius: 3px;
+		border-radius: 0px;
 		width: 120px;
-		border: 1px solid var(--brandGray);
 		font-family: 'Open Sans', sans-serif;
 	}
 	#menu :global(a) {
 		font-size: 13px;
 		color: var(--brandDarkBlue);
-		display: block;
-		margin: 0;
-		padding: 0;
-		padding: 10px;
+		display: inline-block;
+		padding: 10px 12px;
+		margin-right: 10px;
+		width: 120px;
+		border: 1px solid var(--brandGray);
 		text-decoration: none;
-		border-bottom: 1px solid var(--brandGray);
 		text-align: center;
 	}
-	#menu :global(a):last-child {
-	border: none;
-	}
+
 	#menu :global(a):hover {
 	background-color: var(--brandDarkBlue);
 	color: var(--brandWhite);
