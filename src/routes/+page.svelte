@@ -4,7 +4,8 @@
     import HexAccessMap from "../lib/HexAccessMap.svelte";
 
     import "../assets/global-styles.css";
-    import topImage from '../assets/top-image.png'
+    import topImage from '../assets/top-image.png';
+    import BarGraph from '../lib/bar.svelte'
     
 </script>
 
@@ -55,9 +56,9 @@
         <p>
             Describe maps
         </p>
-
+        
         <p>
-            INSERT BAR CHARTS HERE
+            <BarGraph/>
         </p>
         
     </div>

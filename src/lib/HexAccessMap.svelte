@@ -49,7 +49,7 @@
 
 		let nav = new maplibregl.NavigationControl({
 			showZoom: true, 
-			showCompass: true,
+			showCompass: false,
 		});
 
 		map.addControl(scale, 'bottom-right');
@@ -148,7 +148,7 @@
 			},
 			'paint': {
 				'line-color': "#4d4d4d",
-				'line-width': 1.5
+				'line-width': 2
 			}
 		})
 
@@ -161,7 +161,7 @@
 			'type': 'line',
 			'source': 'bus',
 			'layout':{
-				visibility: "none"
+				visibility: "visible"
 			},
 			'paint': {
 				'line-color': "#D0D1C9",
@@ -286,7 +286,9 @@
 
 <svelte:window bind:innerHeight={pageHeight} bind:innerWidth={pageWidth}/>
 
-<nav id="menu"></nav>
+<div> 
+	<nav id="menu"></nav> 
+</div>
 
 <p>
 	15, 30, 45, 60
@@ -315,7 +317,7 @@
 	#menu {
 		background: #fff;
 		position: relative;
-		margin: 160px;
+		margin: 0 auto;
 		display: inline;
 		z-index: 1;
 		top: 10px;
@@ -331,7 +333,8 @@
 		padding: 10px 12px;
 		margin-right: 10px;
 		width: 120px;
-		border: 1px solid var(--brandGray);
+		border: 1px solid var(--brandDarkBlue);
+		border-radius: 4px;
 		text-decoration: none;
 		text-align: center;
 	}
@@ -341,7 +344,7 @@
 	color: var(--brandWhite);
 	}
 	#menu :global(a.active) {
-	background-color: var(--brandMedBlue);
+	background-color: var(--brandDarkBlue);
 	color: var(--brandWhite);
 	}
 	#menu :global(a.active):hover {

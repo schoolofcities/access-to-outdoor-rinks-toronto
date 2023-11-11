@@ -54,7 +54,7 @@ This dataset contains separate shape files for the four major TTC routes (lines)
     </spatialrefsys>
   </crs>
   <extent>
-    <spatial dimensions="2" minx="-82" maxz="0" miny="42" maxx="-77.79999999999999716" crs="EPSG:4326" minz="0" maxy="45.20000000000000284"/>
+    <spatial minz="0" crs="EPSG:4326" minx="-82" maxy="45.20000000000000284" maxz="0" dimensions="2" miny="42" maxx="-77.79999999999999716"/>
     <temporal>
       <period>
         <start></start>
