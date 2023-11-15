@@ -61,6 +61,9 @@
             <BarGraph/>
         </p>
         
+        <p>
+            Describe bar graph......
+        </p>
     </div>
 
 </main>

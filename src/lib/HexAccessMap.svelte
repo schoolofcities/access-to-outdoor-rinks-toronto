@@ -286,10 +286,8 @@
 
 <svelte:window bind:innerHeight={pageHeight} bind:innerWidth={pageWidth}/>
 
-<div> 
-	<nav id="menu"></nav> 
-</div>
-
+<nav id="menu"></nav>
+ 
 <p>
 	15, 30, 45, 60
 </p>
