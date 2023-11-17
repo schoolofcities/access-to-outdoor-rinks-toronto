@@ -3,13 +3,15 @@
 	import { onMount } from 'svelte';
 	import maplibregl, { LineBucket } from 'maplibre-gl';
 	import "../assets/maplibre-gl.css";
+	// import "../assets/global-styles.css";
 	import rinks from '../assets/toronto-rinks.geo.json';
 	import municipalBoundaries from '../assets/toronto-former-municipal-boundaries.geo.json';
 	import hexGrid from '../assets/toronto-hex-grid.geo.json';
 	import travelTime from "../assets/walk_time.geo.json";
 	import notToronto from '../assets/toronto-not.geo.json';
 	import subwayLines from '../assets/subway_lines.geo.json';
-	import busRoutes from '../assets/bus_routes.geo.json';
+	import busRoutes from '../assets/busPath.geo.json';
+	
 
 	let pageHeight;
 	let pageWidth;
@@ -94,7 +96,7 @@
 			'type': 'fill',
 			'source': 'TravelTime',
 			'layout': {
-				visibility: 'visible'
+				visibility: 'none'
 			},
 			'paint': {
 				'fill-color': [
@@ -118,7 +120,7 @@
 			'type': 'fill',
 			'source': 'TravelTime',
 			'layout': {
-				visibility: 'visible'
+				visibility: 'none'
 			},
 			'paint': {
 				'fill-color': [
@@ -286,11 +288,10 @@
 
 <svelte:window bind:innerHeight={pageHeight} bind:innerWidth={pageWidth}/>
 
-<nav id="menu"></nav>
- 
-<p>
-	15, 30, 45, 60
-</p>
+
+
+
+<div id="menu"></div>
 
 <div id="map" style="height: {mapHeight}px"></div>
 
@@ -315,14 +316,18 @@
 	#menu {
 		background: #fff;
 		position: relative;
-		margin: 0 auto;
-		display: inline;
+		margin: 30px 10px 10px 10px;
+		/* padding-left: 15px; */
+		/* padding-right: 15px; */
+		display: inline-block;
 		z-index: 1;
-		top: 10px;
-		right: 10px;
+		/* top: 10px;
+		right: 10px; */
 		border-radius: 0px;
-		width: 120px;
+		width: 100%;
+		/* max-width: 750px; */
 		font-family: 'Open Sans', sans-serif;
+		text-align: center;
 	}
 	#menu :global(a) {
 		font-size: 13px;

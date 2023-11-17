@@ -6,6 +6,7 @@
     import "../assets/global-styles.css";
     import topImage from '../assets/top-image.png';
     import BarGraph from '../lib/bar.svelte'
+    import Legend from "../lib/Legend.svelte";
     
 </script>
 
@@ -39,7 +40,7 @@
     <HexAccessMap/> 
 
     <div class="text">
-
+        <Legend/>
         <p>
             Briefly describe map here, patterns, etc.
         </p>

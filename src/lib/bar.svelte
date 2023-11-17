@@ -4,32 +4,32 @@
     // The percentage of each demographics group for each time range (distance from the cloest rink)
     const percentageData = {
         populationTimePercent: {
-            "Under 15 Mins": 23.4,
-            "15-30 Mins": 51.2,
-            "30-45 Mins": 23.1,
-            "45-60 Mins": 1.6,
-            "More than 60 Mins": 0.7
+            "Under 15 Mins": 21.2,
+            "15-30 Mins": 32.3,
+            "30-45 Mins": 19.5,
+            "45-60 Mins": 13.7,
+            "More than 60 Mins": 13.3
         }, 
         immigrantTimePrecent: {
-            "Under 15 Mins": 19.6,
-            "15-30 Mins": 50.9,
-            "30-45 Mins": 27.0,
-            "45-60 Mins": 1.7,
-            "More than 60 Mins": 0.8
+            "Under 15 Mins": 17.5,
+            "15-30 Mins": 29.0,
+            "30-45 Mins": 21.2,
+            "45-60 Mins": 16.4,
+            "More than 60 Mins": 16.0
         },
         lowIncomeTimePercent: {
-            "Under 15 Mins": 24.4,
-            "15-30 Mins": 50.5,
-            "30-45 Mins": 23.8,
-            "45-60 Mins": 0.9,
-            "More than 60 Mins": 0.3
+            "Under 15 Mins": 21.9,
+            "15-30 Mins": 30.6,
+            "30-45 Mins": 20.3,
+            "45-60 Mins": 14.5,
+            "More than 60 Mins": 12.8
         },
         vmTimePercent:{
-            "Under 15 Mins": 18.6,
-            "15-30 Mins": 49.4,
-            "30-45 Mins": 29.0,
-            "45-60 Mins": 2.1,
-            "More than 60 Mins": 1.0
+            "Under 15 Mins": 16.6,
+            "15-30 Mins": 26.5,
+            "30-45 Mins": 20.9,
+            "45-60 Mins": 17.2,
+            "More than 60 Mins": 18.8
         }
     }
     // the box dimension
@@ -84,58 +84,6 @@
 
 
 <p class="graphTitle"> Percentage of People by Walking Time to the Closest Rink and Demographic Group</p>
-<!-- Legend for the bar graph -->
-<svg width="300" height="90">
-    <text class="legend-title" x="10" y="40">{title1} </text>
-    <rect
-        class="box"
-        width="45"
-        height="20"
-        x="10"
-        y="50"
-        style="fill:{colour[0]};"
-    />
-    <rect
-        class="box"
-        width="45"
-        height="20"
-        x="60"
-        y="50"
-        style="fill:{colour[1]};"
-    />
-    <rect
-        class="box"
-        width="45"
-        height="20"
-        x="110"
-        y="50"
-        style="fill:{colour[2]};"
-    />
-    <rect
-        class="box"
-        width="45"
-        height="20"
-        x="160"
-        y="50"
-        style="fill:{colour[3]};"
-    />
-    <rect
-        class="box"
-        width="45"
-        height="20"
-        x="210"
-        y="50"
-        style="fill:{colour[4]};"
-    />
-
-    <text class="legend-label" x="20" y="85">{labels[0]}</text>
-	<text class="legend-label" x="66" y="85">{labels[1]}</text>
-	<text class="legend-label" x="116" y="85">{labels[2]}</text>
-	<text class="legend-label" x="166" y="85">{labels[3]}</text>
-	<text class="legend-label" x="220" y="85">{labels[4]}</text>
-
-</svg>
-
 
 <div id="container" class="svg-container" bind:offsetWidth={divWidth}>
     {#each boxes as [demographics, boxSizes]}
@@ -155,6 +103,11 @@
                 <rect x={boxSizes["More than 60 Mins"][0]} y="10" width={boxSizes["More than 60 Mins"][1]} height="25"
                 style="fill:#045a8d;stroke:white;stroke-width:1;" />
             </g>
+                <text class="legend-label" x={boxSizes["Under 15 Mins"][0]+boxSizes["Under 15 Mins"][1]/2} y="30">{percentageData[demographics]["Under 15 Mins"]}%</text>
+                <text class="legend-label" x={boxSizes["15-30 Mins"][0]+boxSizes["15-30 Mins"][1]/2} y="30">{percentageData[demographics]["15-30 Mins"]}%</text>
+                <text class="legend-label" x={boxSizes["30-45 Mins"][0]+boxSizes["30-45 Mins"][1]/2} y="30">{percentageData[demographics]["30-45 Mins"]}%</text>
+                <text class="legend-label legend-label-dark" x={boxSizes["45-60 Mins"][0]+boxSizes["45-60 Mins"][1]/2} y="30">{percentageData[demographics]["45-60 Mins"]}%</text>
+                <text class="legend-label legend-label-dark" x={boxSizes["More than 60 Mins"][0]+boxSizes["More than 60 Mins"][1]/2} y="30">{percentageData[demographics]["More than 60 Mins"]}%</text>
         </svg>
     {/each}
 </div>
@@ -188,7 +141,15 @@ p {
 .legend-label {
 		font-size: 13px;
 		fill: rgb(66, 66, 66);
+        text-anchor: middle;
 	}
+.legend-label-dark {
+    fill: rgb(255, 255, 255);
+}
+
+
+
+
 .legend-title {
 		font-size: 13px;
 		fill: rgb(17, 17, 17);
