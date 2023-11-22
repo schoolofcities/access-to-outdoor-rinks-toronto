@@ -4,10 +4,10 @@
         "15-30",
         "30-45",
         "45-60",
-        "<60"
+        ">60"
     ]
 
-    $: title1 = "Travel Time (minutes)"
+    $: title1 = "Travel Time (Minutes):"
 
     $: colour = [
         "#f1eef6",
@@ -19,54 +19,54 @@
 </script>
 
 
-<svg width="300" height="75">
-    <text class="legend-title" x="0" y="20">{title1} </text>
+<svg width="500" height="30">
+    <text class="legend-title" x="0" y="18">{title1} </text>
     <rect
         class="box"
         width="45"
         height="20"
-        x="0"
-        y="30"
+        x="140"
+        y="3"
         style="fill:{colour[0]};"
     />
     <rect
         class="box"
         width="45"
         height="20"
-        x="50"
-        y="30"
+        x="190"
+        y="3"
         style="fill:{colour[1]};"
     />
     <rect
         class="box"
         width="45"
         height="20"
-        x="100"
-        y="30"
+        x="240"
+        y="3"
         style="fill:{colour[2]};"
     />
     <rect
         class="box"
         width="45"
         height="20"
-        x="150"
-        y="30"
+        x="290"
+        y="3"
         style="fill:{colour[3]};"
     />
     <rect
         class="box"
         width="45"
         height="20"
-        x="200"
-        y="30"
+        x="340"
+        y="3"
         style="fill:{colour[4]};"
     />
 
-    <text class="legend-label" x="10" y="65">{labels[0]}</text>
-	<text class="legend-label" x="56" y="65">{labels[1]}</text>
-	<text class="legend-label" x="106" y="65">{labels[2]}</text>
-	<text class="legend-label" x="156" y="65">{labels[3]}</text>
-	<text class="legend-label" x="210" y="65">{labels[4]}</text>
+    <text class="legend-label" x="150" y="18">{labels[0]}</text>
+	<text class="legend-label" x="196" y="18">{labels[1]}</text>
+	<text class="legend-label" x="246" y="18">{labels[2]}</text>
+	<text class="legend-label legend-label-dark" x="296" y="18">{labels[3]}</text>
+	<text class="legend-label legend-label-dark" x="350" y="18">{labels[4]}</text>
 
 </svg>
 
@@ -101,8 +101,15 @@
             font-size: 13px;
             fill: rgb(66, 66, 66);
         }
+
+    .legend-label-dark {
+        font-size: 13px;
+        fill: var(--brandWhite)
+    }
+        
     .legend-title {
             font-family: RobotoRegular;
+            font-weight: 600;
             font-size: 13px;
             fill: var(--brandDarkBlue);
             margin-bottom: 0px;

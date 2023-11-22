@@ -146,10 +146,6 @@ p {
 .legend-label-dark {
     fill: rgb(255, 255, 255);
 }
-
-
-
-
 .legend-title {
 		font-size: 13px;
 		fill: rgb(17, 17, 17);
