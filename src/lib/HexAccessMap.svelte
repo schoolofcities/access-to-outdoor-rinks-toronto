@@ -316,16 +316,12 @@
 	#menu {
 		background: #fff;
 		position: relative;
-		margin: 30px 10px 10px 10px;
-		/* padding-left: 15px; */
-		/* padding-right: 15px; */
+		padding-top: 30px;
+		padding-bottom: 10px;
 		display: inline-block;
 		z-index: 1;
-		/* top: 10px;
-		right: 10px; */
 		border-radius: 0px;
 		width: 100%;
-		/* max-width: 750px; */
 		font-family: 'Open Sans', sans-serif;
 		text-align: center;
 	}

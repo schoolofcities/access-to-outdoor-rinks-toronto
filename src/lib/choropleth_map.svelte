@@ -10,20 +10,24 @@
     
     const demoGPs = {
         "PopDen":{
-            "breaks":[3000,7000,20000,42000,76000],
-            "name":"Population Density"
+            "breaks":[1000,3000,10000,20000,],
+            "name":"Population Density (# of people in a sq.km)",
+            "breakSuffix": ""
         },
         "Immi%":{
-            "breaks":[30,45,55,65,76],
-            "name": "Immigrant Percentage"
+            "breaks":[30,45,55,65,],
+            "name": "Immigrant Percentage",
+            "breakSuffix": "%"
         },
         "VM%":{
-            "breaks":[30,45,65,80,99],
-            "name": "Visible Minority Percentage"
+            "breaks":[30,45,65,80,],
+            "name": "Visible Minority Percentage",
+            "breakSuffix": "%"
         },
         "LIn%":{
-            "breaks":[7,15,20,25,40],
-            "name":"Low Income Population Percentage"
+        "breaks":[7,15,20,25,],
+            "name":"Low Income Population Percentage",
+            "breakSuffix": "%"
         }
     }
 
@@ -31,17 +35,19 @@
         .domain(demoGPs[demoGP]["breaks"])
         .range(ledColours);
 
-    let divWidth = 400;
+    let divWidth = 420;
 	$: innerWidth = divWidth;
-	$: height = (innerWidth * 40) / 80;
+	$: height = innerWidth / 1.75;
 
-	$: projection = geoMercator()
-		.center([-78.17 - 0.0023*innerWidth + 0.000001125*innerWidth**2, 43.5 + 0.00045*innerWidth - 2.5e-7*innerWidth**2])
-		.scale([76000 * innerWidth / 800])
-		.angle([-17]);
+    $: projection = geoMercator()
+            .center([-78.155 - 0.00239*innerWidth + 0.000001125*innerWidth**2, 43.54 + 0.00045*innerWidth - 2.5e-7*innerWidth**2])
+            .scale([82000 * innerWidth / 800])
+            .angle([-17]);
 	$: path = geoPath(projection);
 
-    ctData.map((item =>{
+    let ct = ctData.features;
+
+    ct.map((item =>{
         item.properties[demoGP]
         ?(item.properties["color_"+demoGP] = color(item.properties[demoGP]))
         :(item.properties["color_"+demoGP] = "white");
@@ -54,17 +60,14 @@
 
         <text class="label" x="12" y="22">{demoGPs[demoGP].name}</text>
         
-        {#each ctData as data}
+        {#each ct as data}
             <path class="ct" d={path(data)} fill={data.properties["color_"+demoGP]}/>
         {/each}
 
-        <text class="label" x="320" y="185">Demographic Group</text>
-		<text class="label" x="320" y="200">(Value)</text>
-		<text class="label" x="373" y="170">{demoGPs[demoGP]["breaks"][4]+ "%"}</text>
-        <text class="label" x="373" y="170">{demoGPs[demoGP]["breaks"][3]+ "%"}</text>
-		<text class="label" x="373" y="185">{demoGPs[demoGP]["breaks"][2]+ "%"}</text>
-		<text class="label" x="373" y="200">{demoGPs[demoGP]["breaks"][1]+ "%"}</text>
-		<text class="label" x="373" y="215">{demoGPs[demoGP]["breaks"][0]+ "%"}</text>
+        <text class="label" x="373" y="170">{demoGPs[demoGP]["breaks"][3]+ demoGPs[demoGP].breakSuffix}</text>
+		<text class="label" x="373" y="185">{demoGPs[demoGP]["breaks"][2]+ demoGPs[demoGP].breakSuffix}</text>
+		<text class="label" x="373" y="200">{demoGPs[demoGP]["breaks"][1]+ demoGPs[demoGP].breakSuffix}</text>
+		<text class="label" x="373" y="215">{demoGPs[demoGP]["breaks"][0]+ demoGPs[demoGP].breakSuffix}</text>
 
         <rect class="box" width="20" height = "15" x="350" y="150" style="fill:{ledColours[4]}; stroke: white;"></rect>
 		<rect class="box" width="20" height = "15" x="350" y="165" style="fill:{ledColours[3]}; stroke: white;"></rect>

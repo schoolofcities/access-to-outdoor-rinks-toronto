@@ -52,9 +52,25 @@
         <p>
             Describe ...
         </p>
+    </div>
 
-        
+    <div class="mapGrid">
+        <div class="mapSmall">
+            <ChoroplethMap demoGP="PopDen"/>
+        </div>
+        <div class="mapSmall">
+            <ChoroplethMap demoGP="Immi%"/>
+        </div>
+        <div class="mapSmall">
+            <ChoroplethMap demoGP="VM%"/>
+        </div>
+        <div class="mapSmall">
+            <ChoroplethMap demoGP="LIn%"/>
+        </div>
+    </div>
 
+
+    <div class="text">
         <p>
             Describe maps
         </p>
@@ -69,4 +85,36 @@
     </div>
 
 </main>
+
+<style>
+.mapGrid {
+    margin: auto;
+    padding-bottom: 42px;
+    max-width: 850px;
+    width: 100%;
+    display: grid;
+    gap: 4px 2px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width:842px) {
+    .mapGrid {
+        grid-template-columns: repeat(1, 1fr);
+        /* gap: 0px 0px; */
+        /* width: calc(100% - 40px); */
+    }
+}
+
+.mapSmall {
+    /* background-color: #3d53fb; */
+    /* z-index: -10; */
+    margin: auto;
+    padding: -10px;
+    max-width: 420px;
+    width: 420px;
+    margin: 0 auto;
+    /* border: solid 1px #f4f4f4; */
+}
+
+</style>
 
