@@ -140,7 +140,7 @@ p {
 	}
 .legend-label {
 		font-size: 13px;
-		fill: rgb(66, 66, 66);
+		fill: rgb(0, 0, 0);
         text-anchor: middle;
 	}
 .legend-label-dark {

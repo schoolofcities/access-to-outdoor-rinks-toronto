@@ -7,6 +7,7 @@
     import topImage from '../assets/top-image.png';
     import BarGraph from '../lib/bar.svelte'
     import Legend from "../lib/Legend.svelte";
+    import ChoroplethMap from "../lib/choropleth_map.svelte";
     
 </script>
 
@@ -52,7 +53,7 @@
             Describe ...
         </p>
 
-        <p>INSERT 4 SMALL CENSUS TRACT MAPS HERE</p>
+        
 
         <p>
             Describe maps
