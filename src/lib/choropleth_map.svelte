@@ -64,10 +64,10 @@
             <path class="ct" d={path(data)} fill={data.properties["color_"+demoGP]}/>
         {/each}
 
-        <text class="label" x="373" y="170">{demoGPs[demoGP]["breaks"][3]+ demoGPs[demoGP].breakSuffix}</text>
-		<text class="label" x="373" y="185">{demoGPs[demoGP]["breaks"][2]+ demoGPs[demoGP].breakSuffix}</text>
-		<text class="label" x="373" y="200">{demoGPs[demoGP]["breaks"][1]+ demoGPs[demoGP].breakSuffix}</text>
-		<text class="label" x="373" y="215">{demoGPs[demoGP]["breaks"][0]+ demoGPs[demoGP].breakSuffix}</text>
+        <text class="label legend" x="373" y="170">{demoGPs[demoGP]["breaks"][3]+ demoGPs[demoGP].breakSuffix}</text>
+		<text class="label legend" x="373" y="185">{demoGPs[demoGP]["breaks"][2]+ demoGPs[demoGP].breakSuffix}</text>
+		<text class="label legend" x="373" y="200">{demoGPs[demoGP]["breaks"][1]+ demoGPs[demoGP].breakSuffix}</text>
+		<text class="label legend" x="373" y="215">{demoGPs[demoGP]["breaks"][0]+ demoGPs[demoGP].breakSuffix}</text>
 
         <rect class="box" width="20" height = "15" x="350" y="150" style="fill:{ledColours[4]}; stroke: white;"></rect>
 		<rect class="box" width="20" height = "15" x="350" y="165" style="fill:{ledColours[3]}; stroke: white;"></rect>
@@ -103,7 +103,12 @@
 		opacity: 0.9;
 }
 .label {
-		font-size: 13px;
-		fill: rgb(56, 56, 56);
+		font-size: 14px;
+        font-weight: 600;
+		fill: var(--brandDarkBlue);
 	}
+.legend {
+    font-size: 13px;
+    font-weight: 400;
+}
 </style>

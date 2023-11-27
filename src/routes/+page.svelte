@@ -90,7 +90,7 @@
 .mapGrid {
     margin: auto;
     padding-bottom: 42px;
-    max-width: 850px;
+    max-width: 1000px;
     width: 100%;
     display: grid;
     gap: 4px 2px;
@@ -110,7 +110,7 @@
     /* z-index: -10; */
     margin: auto;
     padding: -10px;
-    max-width: 420px;
+    max-width: 500px;
     width: 420px;
     margin: 0 auto;
     /* border: solid 1px #f4f4f4; */
