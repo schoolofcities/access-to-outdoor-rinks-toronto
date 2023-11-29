@@ -8,6 +8,8 @@
     import BarGraph from '../lib/bar.svelte'
     import Legend from "../lib/Legend.svelte";
     import ChoroplethMap from "../lib/choropleth_map.svelte";
+    import Clustered_bar from "../lib/clustered_bar.svelte";
+    import LegendCb from "../lib/LegendCB.svelte";
     
 </script>
 
@@ -82,6 +84,12 @@
         <p>
             Describe bar graph......
         </p>
+
+        <p>
+            <Clustered_bar/>
+            <LegendCb/>
+        </p>
+        
     </div>
 
 </main>
@@ -90,14 +98,14 @@
 .mapGrid {
     margin: auto;
     padding-bottom: 42px;
-    max-width: 1000px;
+    max-width: 1200px;
     width: 100%;
     display: grid;
     gap: 4px 2px;
     grid-template-columns: repeat(2, 1fr);
 }
 
-@media (max-width:842px) {
+@media (max-width:900px) {
     .mapGrid {
         grid-template-columns: repeat(1, 1fr);
         /* gap: 0px 0px; */
@@ -110,8 +118,8 @@
     /* z-index: -10; */
     margin: auto;
     padding: -10px;
-    max-width: 500px;
-    width: 420px;
+    max-width: 600px;
+    width: 600px;
     margin: 0 auto;
     /* border: solid 1px #f4f4f4; */
 }

@@ -3,6 +3,7 @@
     import * as d3 from 'd3';
     import { geoPath, geoMercator, scaleThreshold } from "d3"; 
     import ctData from "../assets/ctData.geo.json"; //the census data by CT
+    import rinks from "../assets/toronto-rinks.geo.json";
     
     var ledColours = ["#ede9fe", "#dad9f9", "#aaacd4", "#6e6d9f", "#383669"] //colours for the map
 
@@ -10,7 +11,7 @@
     
     const demoGPs = {
         "PopDen":{
-            "breaks":[1000,3000,10000,20000,],
+            "breaks":[1000,3000,6000,12000,],
             "name":"Population Density (# of people in a sq.km)",
             "breakSuffix": ""
         },
@@ -35,7 +36,7 @@
         .domain(demoGPs[demoGP]["breaks"])
         .range(ledColours);
 
-    let divWidth = 420;
+    let divWidth = 600;
 	$: innerWidth = divWidth;
 	$: height = innerWidth / 1.75;
 
@@ -45,6 +46,7 @@
             .angle([-17]);
 	$: path = geoPath(projection);
 
+    let toRinks = rinks.features;
     let ct = ctData.features;
 
     ct.map((item =>{
@@ -52,6 +54,7 @@
         ?(item.properties["color_"+demoGP] = color(item.properties[demoGP]))
         :(item.properties["color_"+demoGP] = "white");
     }))
+
 
 </script>
 
@@ -64,16 +67,25 @@
             <path class="ct" d={path(data)} fill={data.properties["color_"+demoGP]}/>
         {/each}
 
-        <text class="label legend" x="373" y="170">{demoGPs[demoGP]["breaks"][3]+ demoGPs[demoGP].breakSuffix}</text>
-		<text class="label legend" x="373" y="185">{demoGPs[demoGP]["breaks"][2]+ demoGPs[demoGP].breakSuffix}</text>
-		<text class="label legend" x="373" y="200">{demoGPs[demoGP]["breaks"][1]+ demoGPs[demoGP].breakSuffix}</text>
-		<text class="label legend" x="373" y="215">{demoGPs[demoGP]["breaks"][0]+ demoGPs[demoGP].breakSuffix}</text>
+        {#each toRinks as data}
+            <circle
+            class="rink"
+            cx={projection(data.geometry.coordinates)[0]}
+            cy={projection(data.geometry.coordinates)[1]}
+            r="2.5px"
+            fill="black"/>
+        {/each}
 
-        <rect class="box" width="20" height = "15" x="350" y="150" style="fill:{ledColours[4]}; stroke: white;"></rect>
-		<rect class="box" width="20" height = "15" x="350" y="165" style="fill:{ledColours[3]}; stroke: white;"></rect>
-		<rect class="box" width="20" height = "15" x="350" y="180" style="fill:{ledColours[2]}; stroke: white;"></rect>
-		<rect class="box" width="20" height = "15" x="350" y="195" style="fill:{ledColours[1]}; stroke: white;"></rect>
-		<rect class="box" width="20" height = "15" x="350" y="210" style="fill:{ledColours[0]}; stroke: white;"></rect>
+        <text class="label legend" x="475" y="268">{demoGPs[demoGP]["breaks"][3]+ demoGPs[demoGP].breakSuffix}</text>
+		<text class="label legend" x="475" y="283">{demoGPs[demoGP]["breaks"][2]+ demoGPs[demoGP].breakSuffix}</text>
+		<text class="label legend" x="475" y="298">{demoGPs[demoGP]["breaks"][1]+ demoGPs[demoGP].breakSuffix}</text>
+		<text class="label legend" x="475" y="313">{demoGPs[demoGP]["breaks"][0]+ demoGPs[demoGP].breakSuffix}</text>
+
+        <rect class="box" width="20" height = "15" x="450" y="250" style="fill:{ledColours[4]}; stroke: white;"></rect>
+		<rect class="box" width="20" height = "15" x="450" y="265" style="fill:{ledColours[3]}; stroke: white;"></rect>
+		<rect class="box" width="20" height = "15" x="450" y="280" style="fill:{ledColours[2]}; stroke: white;"></rect>
+		<rect class="box" width="20" height = "15" x="450" y="295" style="fill:{ledColours[1]}; stroke: white;"></rect>
+		<rect class="box" width="20" height = "15" x="450" y="310" style="fill:{ledColours[0]}; stroke: white;"></rect>
 
 
     </svg>
@@ -81,24 +93,13 @@
 
 
 <style>
-.mapGrid {
-    margin: auto;
-    padding-bottom: 42px;
-    max-width: 850px;
-    width: 100%;
-    display: grid;
-    gap: 4px 2px;
-    grid-template-columns: repeat(2, 1fr);
-}
-.mapSmall {
-    margin: auto;
-    padding: -10px;
-    max-width: 420px;
-    width: 420px;
-    margin: 0 auto;
+.rink{
+    stroke: var(--brandWhite);
+    stroke-width: 1px;
+    fill: var(--brandGray90)
 }
 .ct {
-		stroke: rgb(237, 237, 237);
+		stroke: var(--brandGray);
 		stroke-width: 1px;
 		opacity: 0.9;
 }
