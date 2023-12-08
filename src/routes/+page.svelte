@@ -4,7 +4,12 @@
     import HexAccessMap from "../lib/HexAccessMap.svelte";
 
     import "../assets/global-styles.css";
-    import topImage from '../assets/top-image.png'
+    import topImage from '../assets/top-image.png';
+    import BarGraph from '../lib/bar.svelte'
+    import Legend from "../lib/Legend.svelte";
+    import ChoroplethMap from "../lib/choropleth_map.svelte";
+    import Clustered_bar from "../lib/clustered_bar.svelte";
+    import LegendCb from "../lib/LegendCB.svelte";
     
 </script>
 
@@ -23,7 +28,6 @@
         <p>
             Cities with colder climates, like many in Canada, 
 
-
             - Why skating rinks are important, cite 2-4 pieces of key literature/new articles
             - Briefly on history of skating rinks in Toronto, how many are there? what do they offer (public skating/hockey/classes/can be booked for activities)
         </p>
@@ -36,10 +40,10 @@
 
     </div>
 
-    <HexAccessMap/>    
+    <HexAccessMap/> 
 
     <div class="text">
-
+        <Legend/>
         <p>
             Briefly describe map here, patterns, etc.
         </p>
@@ -50,18 +54,75 @@
         <p>
             Describe ...
         </p>
+    </div>
 
-        <p>INSERT 4 SMALL CENSUS TRACT MAPS HERE</p>
+    <div class="mapGrid">
+        <div class="mapSmall">
+            <ChoroplethMap demoGP="PopDen"/>
+        </div>
+        <div class="mapSmall">
+            <ChoroplethMap demoGP="Immi%"/>
+        </div>
+        <div class="mapSmall">
+            <ChoroplethMap demoGP="VM%"/>
+        </div>
+        <div class="mapSmall">
+            <ChoroplethMap demoGP="LIn%"/>
+        </div>
+    </div>
 
+
+    <div class="text">
         <p>
             Describe maps
         </p>
+        
+        <p>
+            <BarGraph/>
+        </p>
+        
+        <p>
+            Describe bar graph......
+        </p>
 
         <p>
-            INSERT BAR CHARTS HERE
+            <Clustered_bar/>
+            <LegendCb/>
         </p>
         
     </div>
 
 </main>
+
+<style>
+.mapGrid {
+    margin: auto;
+    padding-bottom: 42px;
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    gap: 4px 2px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width:900px) {
+    .mapGrid {
+        grid-template-columns: repeat(1, 1fr);
+        /* gap: 0px 0px; */
+        /* width: calc(100% - 40px); */
+    }
+}
+
+.mapSmall {
+    /* background-color: #3d53fb; */
+    /* z-index: -10; */
+    margin: auto;
+    padding: -10px;
+    max-width: 600px;
+    width: 600px;
+    margin: 0 auto;
+    /* border: solid 1px #f4f4f4; */
+}
+
+</style>
 

@@ -1,12 +1,17 @@
 <script>
 
 	import { onMount } from 'svelte';
-	import maplibregl from 'maplibre-gl';
+	import maplibregl, { LineBucket } from 'maplibre-gl';
 	import "../assets/maplibre-gl.css";
+	// import "../assets/global-styles.css";
 	import rinks from '../assets/toronto-rinks.geo.json';
 	import municipalBoundaries from '../assets/toronto-former-municipal-boundaries.geo.json';
 	import hexGrid from '../assets/toronto-hex-grid.geo.json';
+	import travelTime from "../assets/walk_time.geo.json";
 	import notToronto from '../assets/toronto-not.geo.json';
+	import subwayLines from '../assets/subway_lines.geo.json';
+	import busRoutes from '../assets/busPath.geo.json';
+	
 
 	let pageHeight;
 	let pageWidth;
@@ -36,39 +41,133 @@
 			projection: 'globe',
 			scrollZoom: true,
 			attributionControl: false,
+			showZoom: true,
 		});
 
 		let scale = new maplibregl.ScaleControl({
 			maxWidth: 100,
 			unit: 'metric',
 		});
+
+		let nav = new maplibregl.NavigationControl({
+			showZoom: true, 
+			showCompass: false,
+		});
+
 		map.addControl(scale, 'bottom-right');
+		map.addControl(nav, 'top-right'); //add the zoom button panel to the map
 
 		map.dragRotate.disable();
 		map.touchZoomRotate.disableRotation();
 		map.scrollZoom.disable();
 
-
-		map.addSource('hexGrid', {
+		map.addSource('TravelTime',{
 			type: 'geojson',
-			data: hexGrid
+			data: travelTime
 		})
+
+		//layer - travel time by walking
 		map.addLayer({
-			'id': 'hexGrid',
+			'id': 'walkTime',
 			'type': 'fill',
-			'source': 'hexGrid',
+			'source': 'TravelTime',
+			'layout': {
+				visibility: 'visible'
+			},
 			'paint': {
 				'fill-color': [
 					'step',
-					['get', 'id'],
-					'#e7f8ff', 10000, 
-					'#8dd3ef', 20000, 
-					'#6e8ac0', 30000, 
-					'#6d559c', 40000,
-					'#6d247a' 
+					['get', 'walk_real'],
+					"#FF0000",
+					0, "#f1eef6",
+					15, '#bdc9e1',
+					30, '#74a9cf',
+					45, '#2b8cbe',
+					60, '#045a8d',
 				],
 				'fill-opacity': 0.75,
-				'fill-outline-color': 'white',
+				// 'fill-outline-color': 'white',
+			}
+		})
+
+		//layer - travel time by transit - weekday
+		map.addLayer({
+			'id': 'transitWeekday',
+			'type': 'fill',
+			'source': 'TravelTime',
+			'layout': {
+				visibility: 'none'
+			},
+			'paint': {
+				'fill-color': [
+					'step',
+					['get', 'transit_wd_real'],
+					"#FF0000",
+					0, "#f1eef6",
+					15, '#bdc9e1',
+					30, '#74a9cf',
+					45, '#2b8cbe',
+					60, '#045a8d',
+				],
+				'fill-opacity': 0.75,
+				// 'fill-outline-color': 'white',
+			}
+		})
+
+		//layer - travel time by transit - weekend
+		map.addLayer({
+			'id': 'transitWeekend',
+			'type': 'fill',
+			'source': 'TravelTime',
+			'layout': {
+				visibility: 'none'
+			},
+			'paint': {
+				'fill-color': [
+					'step',
+					['get', 'transit_we_real'],
+					"#FF0000",
+					0, "#f1eef6",
+					15, '#bdc9e1',
+					30, '#74a9cf',
+					45, '#2b8cbe',
+					60, '#045a8d',
+				],
+				'fill-opacity': 0.75,
+				// 'fill-outline-color': 'white',
+			}
+		})
+		map.addSource('subway',{
+			type: 'geojson',
+			data : subwayLines
+		})
+		map.addLayer({
+			'id': 'subway',
+			'type': 'line',
+			'source': 'subway',
+			'layout':{
+				visibility: "visible"
+			},
+			'paint': {
+				'line-color': "#4d4d4d",
+				'line-width': 2
+			}
+		})
+
+		map.addSource('bus',{
+			type: 'geojson',
+			data : busRoutes
+		})
+		map.addLayer({
+			'id': 'bus',
+			'type': 'line',
+			'source': 'bus',
+			'layout':{
+				visibility: "visible"
+			},
+			'paint': {
+				'line-color': "#D0D1C9",
+				'line-width': 0.1
 			}
 		})
 
@@ -112,39 +211,91 @@
 			'type': 'line',
 			'source': 'municipalBoundaries',
 			'paint': {
-				'line-color': '#007FA3'
+				'line-color': '#7d979e'
 			}
 		})
 
 		map.addSource('rinks', {
-				type: 'geojson',
-				data: rinks
-			})
-			map.addLayer({
-				'id': 'rinks',
-				'type': 'circle',
-				'source': 'rinks',
-			})
+			type: 'geojson',
+			data: rinks
+		})
+		map.addLayer({
+			'id': 'rinks',
+			'type': 'circle',
+			'source': 'rinks',
+			'paint': {
+				"circle-color": "#6D247A",
+				"circle-radius" : 3.5
+			}
+		})
 
+		map.on('load', () => {
+			const toggleableLayerIds = {"walkTime": "Walk", "transitWeekday": "Transit (Weekday)", "transitWeekend": "Transit (Weekend)"};
+
+			for (const id in toggleableLayerIds) {
+
+				if(!map.getLayer(id)) {
+					continue;
+				}
+	
+				//create a link
+				const link = document.createElement("a");
+				link.id = id;
+				link.href = "#";
+				link.textContent = toggleableLayerIds[id];
+				if (id === "walkTime") {
+					link.className = "active";
+				}
+				
+
+				//show or hide layer when the toggle is clicked
+				link.onclick = function (e) {
+					const clickedLayer = this.id;
+					e.preventDefault();
+					e.stopPropagation();
+
+					// Set clicked button to active and show map layer
+					this.className = "active";
+					map.setLayoutProperty(clickedLayer, 
+						'visibility', 
+						'visible'
+					);
+					
+					// For others, set button not active and map layers not shown
+					for(const other in toggleableLayerIds) {
+						if (other === clickedLayer) {
+							continue;
+						}
+
+						const button = document.getElementById(other);
+						button.className = " "
+						map.setLayoutProperty(other, 
+							'visibility', 
+							'none'
+						);
+					}
+				};
+				const layers = document.getElementById('menu');
+				layers.appendChild(link);
+			}
+
+
+		})
 	});
+
 
 </script>
 
-
-
-
 <svelte:window bind:innerHeight={pageHeight} bind:innerWidth={pageWidth}/>
 
-<p>
-	15, 30, 45, 60
-</p>
+
+
+
+<div id="menu"></div>
 
 <div id="map" style="height: {mapHeight}px"></div>
 
 <p>Data Sources: OpenStreetMap, City of Toronto</p>
-
-
-
 
 <style>
 	#map {
@@ -162,4 +313,41 @@
 		max-width: 1200px;
 		color: var(--brandMedBlue);
 	}
+	#menu {
+		background: #fff;
+		position: relative;
+		padding-top: 30px;
+		padding-bottom: 10px;
+		display: inline-block;
+		z-index: 1;
+		border-radius: 0px;
+		width: 100%;
+		font-family: 'Open Sans', sans-serif;
+		text-align: center;
+	}
+	#menu :global(a) {
+		font-size: 13px;
+		color: var(--brandDarkBlue);
+		display: inline-block;
+		padding: 10px 12px;
+		margin-right: 10px;
+		width: 120px;
+		border: 1px solid var(--brandDarkBlue);
+		border-radius: 4px;
+		text-decoration: none;
+		text-align: center;
+	}
+
+	#menu :global(a):hover {
+	background-color: var(--brandDarkBlue);
+	color: var(--brandWhite);
+	}
+	#menu :global(a.active) {
+	background-color: var(--brandDarkBlue);
+	color: var(--brandWhite);
+	}
+	#menu :global(a.active):hover {
+	background: var(--brandDarkBlue);
+	}
+
 </style>
