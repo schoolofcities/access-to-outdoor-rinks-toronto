@@ -85,7 +85,7 @@
 					45, '#2b8cbe',
 					60, '#045a8d',
 				],
-				'fill-opacity': 0.75,
+				'fill-opacity': 1,
 				// 'fill-outline-color': 'white',
 			}
 		})
@@ -109,7 +109,7 @@
 					45, '#2b8cbe',
 					60, '#045a8d',
 				],
-				'fill-opacity': 0.75,
+				'fill-opacity': 1,
 				// 'fill-outline-color': 'white',
 			}
 		})
@@ -133,27 +133,28 @@
 					45, '#2b8cbe',
 					60, '#045a8d',
 				],
-				'fill-opacity': 0.75,
+				'fill-opacity': 1,
 				// 'fill-outline-color': 'white',
 			}
 		})
-		map.addSource('subway',{
+		
+
+		
+
+		map.addSource('notToronto', {
 			type: 'geojson',
-			data : subwayLines
+			data: notToronto
 		})
 		map.addLayer({
-			'id': 'subway',
-			'type': 'line',
-			'source': 'subway',
-			'layout':{
-				visibility: "visible"
-			},
+			'id': 'notToronto',
+			'type': 'fill',
+			'source': 'notToronto',
 			'paint': {
-				'line-color': "#4d4d4d",
-				'line-width': 2
+				'fill-color': '#ffffff',
+				'fill-opacity': 1,
 			}
 		})
-
+		
 		map.addSource('bus',{
 			type: 'geojson',
 			data : busRoutes
@@ -166,22 +167,9 @@
 				visibility: "visible"
 			},
 			'paint': {
-				'line-color': "#D0D1C9",
-				'line-width': 0.1
-			}
-		})
-
-		map.addSource('notToronto', {
-			type: 'geojson',
-        	data: notToronto
-		})
-		map.addLayer({
-			'id': 'notToronto',
-			'type': 'fill',
-			'source': 'notToronto',
-			'paint': {
-				'fill-color': '#ffffff',
-				'fill-opacity': 1
+				'line-color': "#fff",
+				'line-width': 1,
+				'line-opacity': 0.24
 			}
 		})
 
@@ -198,20 +186,50 @@
 			'source': 'osm-raster-tiles',
 			'paint': {
 				'raster-saturation': -1,
-				'raster-opacity': 0.13
+				'raster-opacity': 0.18
 			}
 		})	
 
+		
+
+		map.addSource('subway',{
+			type: 'geojson',
+			data : subwayLines
+		})
+		map.addLayer({
+			'id': 'subway',
+			'type': 'line',
+			'source': 'subway',
+			'layout':{
+				visibility: "visible"
+			},
+			'paint': {
+				'line-color': "#666464",
+				'line-width': 1
+			}
+		})
+
 		map.addSource('municipalBoundaries', {
 			type: 'geojson',
-        	data: municipalBoundaries
+			data: municipalBoundaries
 		})
 		map.addLayer({
 			'id': 'municipalBoundaries',
 			'type': 'line',
 			'source': 'municipalBoundaries',
 			'paint': {
-				'line-color': '#7d979e'
+				'line-color': '#1E3765',
+				'line-opacity': 0.3
+			}
+		})
+
+		map.addLayer({
+			'id': 'notTorontoStroke',
+			'type': 'line',
+			'source': 'notToronto',
+			'paint': {
+				'line-color': "#1E3765",
+				'line-width': 1.5
 			}
 		})
 
@@ -224,10 +242,15 @@
 			'type': 'circle',
 			'source': 'rinks',
 			'paint': {
-				"circle-color": "#6D247A",
-				"circle-radius" : 3.5
+				"circle-color": "#000",
+				"circle-radius" : 4.2,
+				"circle-stroke-color": "#fff",
+				"circle-stroke-width": 2
 			}
 		})
+
+		
+
 
 		map.on('load', () => {
 			const toggleableLayerIds = {"walkTime": "Walk", "transitWeekday": "Transit (Weekday)", "transitWeekend": "Transit (Weekend)"};
