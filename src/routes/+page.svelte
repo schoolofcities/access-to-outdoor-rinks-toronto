@@ -57,16 +57,20 @@
 	<HexAccessMap/> 
 
 	<div class="text">
+
+		<p>
+			Describe pattern on map above here.
+		</p>
 		
 		<p>
-			Briefly describe map here, patterns, etc.
+			The majority of the former City of Toronto being within a 30 minute walk to the nearest outdoor rink. Conversely, most Scarborough neighbourhoods do not have access to a nearby outdoor rink.
 		</p>
 
 
 		<h2>Who has access?</h2>
 	   
 		<p>
-			Describe ...
+			Are differences among demographic groups in ability to access to outdoor rinks. Below we create four maps, comparing data from the 2021 Canadian census to the location of outdoor skating rinks. The first map shows population density. This highlights how some of the most-dense neighbourhoods have rinks nearby, but several nodes of high density in the inner-suburbs do not.
 		</p>
 	</div>
 
@@ -119,34 +123,47 @@
 </main>
 
 <style>
-.mapGrid {
-	margin: auto;
-	padding-bottom: 42px;
-	max-width: 1200px;
-	width: 100%;
-	display: grid;
-	gap: 4px 2px;
-	grid-template-columns: repeat(2, 1fr);
-}
+	
+    /* Default styles for the container and divs */
+    .mapGrid {
+		margin: 0 auto;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		max-width: 1201px;
+    }
 
-@media (max-width:900px) {
-	.mapGrid {
-		grid-template-columns: repeat(1, 1fr);
-		/* gap: 0px 0px; */
-		/* width: calc(100% - 40px); */
-	}
-}
+    .mapSmall {
+		width: 100%; /* Default to 100% width */
+		box-sizing: border-box;
+		margin-bottom: -1px;
+		border-top: solid 1px var(--brandLightBlue);
+		border-bottom: solid 1px var(--brandLightBlue);
+    }
 
-.mapSmall {
-	/* background-color: #3d53fb; */
-	/* z-index: -10; */
-	margin: auto;
-	padding: -10px;
-	max-width: 600px;
-	width: 600px;
-	margin: 0 auto;
-	/* border: solid 1px #f4f4f4; */
-}
+    /* Media query for screens with a width greater than 1200px */
+    @media (min-width: 1201px) {
+      .mapSmall {
+        width: 48%; /* Display 2x2 at 1200px and wider */
+      }
+    }
+
+    /* Media query for screens between 600px and 1200px */
+    @media (min-width: 601px) and (max-width: 1200px) {
+      .mapSmall {
+        width: 580px; /* Display exactly 600px wide */
+      }
+    }
+
+    /* Media query for screens less than 600px */
+    @media (max-width: 600px) {
+      .mapSmall {
+        width: 100%; /* Adjust to screen width */
+        min-width: 400px; /* Set a minimum width */
+      }
+    }
+
+
 
 </style>
 

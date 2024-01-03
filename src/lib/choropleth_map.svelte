@@ -1,33 +1,34 @@
 <script>
-    import { onMount } from 'svelte';
-    import * as d3 from 'd3';
+
     import { geoPath, geoMercator, scaleThreshold } from "d3"; 
     import ctData from "../assets/ctData.geo.json"; //the census data by CT
     import rinks from "../assets/toronto-rinks.geo.json";
+    import border from "../assets/toronto-former-municipal-boundaries.geo.json"
     
-    var ledColours = ["#ede9fe", "#dad9f9", "#aaacd4", "#6e6d9f", "#383669"] //colours for the map
+    var ledColours = ["#ede9fe", "#dad9f9", "#aaacd4", "#6e6d9f", "#383669"] 
+    // var ledColours = ["#975e86", "#bb8f90", "#dec09a", "#ffeea3"] // // // //
 
     export let demoGP;
     
     const demoGPs = {
         "PopDen":{
-            "breaks":[1000,3000,6000,12000,],
-            "name":"Population Density (# of people in a sq.km)",
+            "breaks":[2500,5000,7500],
+            "name":"Population Density (# of people per sq.km)",
             "breakSuffix": ""
         },
         "Immi%":{
-            "breaks":[30,45,55,65,],
-            "name": "Immigrant Percentage",
+            "breaks":[30,45,60],
+            "name": "Immigrant (% of population)",
             "breakSuffix": "%"
         },
         "VM%":{
-            "breaks":[30,45,65,80,],
-            "name": "Visible Minority Percentage",
+            "breaks":[30,45,60],
+            "name": "Visible Minority (% of population)",
             "breakSuffix": "%"
         },
         "LIn%":{
-        "breaks":[7,15,20,25,],
-            "name":"Low Income Population Percentage",
+        "breaks":[5,10,15],
+            "name":"Low Income (% of population)",
             "breakSuffix": "%"
         }
     }
@@ -36,13 +37,16 @@
         .domain(demoGPs[demoGP]["breaks"])
         .range(ledColours);
 
-    let divWidth = 600;
+    let divWidth;
 	$: innerWidth = divWidth;
-	$: height = innerWidth / 1.75;
+	$: height = innerWidth / 1.5;
+
+    $: console.log(divWidth);
 
     $: projection = geoMercator()
-            .center([-78.155 - 0.00239*innerWidth + 0.000001125*innerWidth**2, 43.54 + 0.00045*innerWidth - 2.5e-7*innerWidth**2])
-            .scale([82000 * innerWidth / 800])
+            //.center([-78.155 - 0.00239*innerWidth + 0.000001125*innerWidth**2, 43.545 + 0.00045*innerWidth - 1.8e-7*innerWidth**2])
+            .center([-79.2 + 0.21 * ((600 - innerWidth) / 200), 43.727 - 0.02 * ((600 - innerWidth) / 200) ])
+            .scale([62000 * innerWidth / 600])
             .angle([-17]);
 	$: path = geoPath(projection);
 
@@ -58,13 +62,22 @@
 
 </script>
 
-<div bind:offsetWidth={divWidth}>
+<div id="container" bind:offsetWidth={divWidth}>
+
 	<svg width={innerWidth} {height} id={demoGP}>
 
-        <text class="label" x="12" y="22">{demoGPs[demoGP].name}</text>
+        <text class="label" x="5" y="22">{demoGPs[demoGP].name}</text>
         
+        {#each border.features as data}
+            <path d={path(data)} stroke="#6FC7EA" stroke-width=6 fill=none opacity=0.23/>
+        {/each}
+
         {#each ct as data}
             <path class="ct" d={path(data)} fill={data.properties["color_"+demoGP]}/>
+        {/each}
+
+        {#each border.features as data}
+            <path d={path(data)} stroke="#6FC7EA" stroke-width=1 fill=none opacity=0.8/>
         {/each}
 
         {#each toRinks as data}
@@ -72,44 +85,49 @@
             class="rink"
             cx={projection(data.geometry.coordinates)[0]}
             cy={projection(data.geometry.coordinates)[1]}
-            r="2.5px"
+            r="4"
+            stroke="white"
+            stroke-width="2"
             fill="black"/>
         {/each}
 
-        <text class="label legend" x="475" y="268">{demoGPs[demoGP]["breaks"][3]+ demoGPs[demoGP].breakSuffix}</text>
-		<text class="label legend" x="475" y="283">{demoGPs[demoGP]["breaks"][2]+ demoGPs[demoGP].breakSuffix}</text>
-		<text class="label legend" x="475" y="298">{demoGPs[demoGP]["breaks"][1]+ demoGPs[demoGP].breakSuffix}</text>
-		<text class="label legend" x="475" y="313">{demoGPs[demoGP]["breaks"][0]+ demoGPs[demoGP].breakSuffix}</text>
+        <rect class="box" width="70" height = "12" x="215" y="30" style="fill:{ledColours[3]}; stroke: white;"></rect>
+        <rect class="box" width="70" height = "12" x="145" y="30" style="fill:{ledColours[2]}; stroke: white;"></rect>
+		<rect class="box" width="70" height = "12" x="75" y="30" style="fill:{ledColours[1]}; stroke: white;"></rect>
+		<rect class="box" width="70" height = "12" x="5" y="30" style="fill:{ledColours[0]}; stroke: white;"></rect>
 
-        <rect class="box" width="20" height = "15" x="450" y="250" style="fill:{ledColours[4]}; stroke: white;"></rect>
-		<rect class="box" width="20" height = "15" x="450" y="265" style="fill:{ledColours[3]}; stroke: white;"></rect>
-		<rect class="box" width="20" height = "15" x="450" y="280" style="fill:{ledColours[2]}; stroke: white;"></rect>
-		<rect class="box" width="20" height = "15" x="450" y="295" style="fill:{ledColours[1]}; stroke: white;"></rect>
-		<rect class="box" width="20" height = "15" x="450" y="310" style="fill:{ledColours[0]}; stroke: white;"></rect>
-
-
+        <text class="label legend" x="215" y="55" text-anchor="middle">{demoGPs[demoGP]["breaks"][2]+ demoGPs[demoGP].breakSuffix}</text>
+		<text class="label legend" x="145" y="55" text-anchor="middle">{demoGPs[demoGP]["breaks"][1]+ demoGPs[demoGP].breakSuffix}</text>
+		<text class="label legend" x="75" y="55" text-anchor="middle">{demoGPs[demoGP]["breaks"][0]+ demoGPs[demoGP].breakSuffix}</text>
+        
     </svg>
+
 </div>
 
 
 <style>
-.rink{
-    stroke: var(--brandWhite);
-    stroke-width: 1px;
-    fill: var(--brandGray90)
-}
-.ct {
-		stroke: var(--brandGray);
-		stroke-width: 1px;
-		opacity: 0.9;
-}
-.label {
-		font-size: 14px;
-        font-weight: 600;
-		fill: var(--brandDarkBlue);
-	}
-.legend {
-    font-size: 13px;
-    font-weight: 400;
-}
+    #container {
+        width: 100%;
+        max-width: 600px;
+        min-width: 400px;
+    }
+    .rink{
+        stroke: var(--brandWhite);
+        stroke-width: 1px;
+        fill: var(--brandGray90)
+    }
+    .ct {
+            stroke: var(--brandWhite);
+            stroke-width: 0.5px;
+            opacity: 1;
+    }
+    .label {
+            font-size: 14px;
+            font-weight: 600;
+            fill: var(--brandDarkBlue);
+        }
+    .legend {
+        font-size: 13px;
+        font-weight: 400;
+    }
 </style>

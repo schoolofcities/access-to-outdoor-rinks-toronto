@@ -344,8 +344,8 @@
 		width: 100%;
 		margin: 0 auto;
 		max-width: 1200px;
-		border-top: 1px solid var(--brandMedBlue);
-		border-bottom: 1px solid var(--brandMedBlue);
+		border-top: 1px solid var(--brandLightBlue);
+		border-bottom: 1px solid var(--brandLightBlue);
 		background-color: white;
 	}
 	p {
