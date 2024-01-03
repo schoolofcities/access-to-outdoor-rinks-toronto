@@ -23,17 +23,19 @@
 	<div class="text">
 		<div class="title">
 			<h1>The Geography of Toronto's Outdoor Skating Rinks</h1>
-			<p>Jeff Allen & Teresa Lau // January 2024</p>
+			<p>Teresa Lau & Jeff Allen // January 2024</p>
 		</div>
 		<p>
-			Cities with colder climates, like many in Canada, 
+			Cities with colder climates, like many in Canada, ....
 
 			- Why skating rinks are important, cite 2-4 pieces of key literature/new articles
-			- Briefly on history of skating rinks in Toronto, how many are there? what do they offer (public skating/hockey/classes/can be booked for activities)
+		</p>
+		<p>
+			- Briefly on history of skating rinks in Toronto, how many are there? what do they offer 
 		</p>
 		
 		<p>
-			There are also a number of indoor skating rinks in Toronto, but most of these only have limited public skating hours, typically do not have public shinny, and typically require a small fee for entrance. The outdoor rinks operated by the City are free, and at most times of day are available for leisure skating or shinny (the latter is typically scheduled based on age group). The <a href="https://www.toronto.ca/explore-enjoy/recreation/skating-winter-sports/public-leisure-skating">City's website </a> lists the schedules and details for each rink.
+			There are also a number of indoor skating rinks in Toronto, but most of these only have limited public skating hours, typically do not have public ice hockey times, and usually require a small fee for entrance. The outdoor rinks operated by the City are free, and at most times of day are available for leisure skating or ice hockey (the latter is typically scheduled based on age group). The <a href="https://www.toronto.ca/explore-enjoy/recreation/skating-winter-sports/public-leisure-skating">City's website </a> lists the schedules and details for each rink.
 		</p>
 		<p>
 			While there are over 50 outdoor rinks in Toronto, there are large swaths of the City that do not live close to a rink and thus have to travel long distances to access them.
@@ -42,12 +44,20 @@
 			Below we've created a map showing the locations of outdoor skating rinks, with the background of the map coloured by the travel time in each neighbourhood to the nearest skating rink. This is a type of <a href="https://en.wikipedia.org/wiki/Isochrone_map">isochrone map</a>, and it highlights which parts of the City have better or worse accessibility to outdoor skating rinks. The map also has a toggle for switching between travel times by walking and by transit.
 		</p>
 
+		<br>
+
+		<Legend/>
+
+		<p>
+			<span class="bold">Travel Mode:</span>
+		</p>
+
 	</div>
 
 	<HexAccessMap/> 
 
 	<div class="text">
-		<Legend/>
+		
 		<p>
 			Briefly describe map here, patterns, etc.
 		</p>
@@ -94,6 +104,16 @@
 			<LegendCb/>
 		</p>
 		
+	</div>
+
+	<div class="text">
+
+		<h2>Data & Methods</h2>
+
+		<p>
+			Describe such here..
+		</p>
+
 	</div>
 
 </main>

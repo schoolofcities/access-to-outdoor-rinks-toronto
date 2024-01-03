@@ -124,8 +124,9 @@ p {
 }
 
 .bold {
-    background-color: var(--brandPurple);
+    /* background-color: var(--brandPurple); */
     font-family: RobotoBold;
+    /* color: var(--brandPurple); */
 }
 
 .note {
@@ -134,13 +135,13 @@ p {
 }
 
 a {
-    color: var(--brandPink);
+    color: var(--brandDarkBlue);
     text-decoration: underline;
     font-family: RobotoBold;
 
 }
 a:hover {
-    color: var(--brandLightBlue);
+    color: var(--brandMedBlue);
 }
 
 .topImg {

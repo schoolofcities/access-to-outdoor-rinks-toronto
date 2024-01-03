@@ -169,7 +169,7 @@
 			'paint': {
 				'line-color': "#fff",
 				'line-width': 1,
-				'line-opacity': 0.24
+				'line-opacity': 0.2
 			}
 		})
 
@@ -186,7 +186,7 @@
 			'source': 'osm-raster-tiles',
 			'paint': {
 				'raster-saturation': -1,
-				'raster-opacity': 0.18
+				'raster-opacity': 0.14
 			}
 		})	
 
@@ -337,24 +337,31 @@
 		color: var(--brandMedBlue);
 	}
 	#menu {
+		margin: 0 auto;
+		margin-top: -10px;
+		max-width: 750px;
 		background: #fff;
 		position: relative;
-		padding-top: 30px;
+		padding-top: -10px;
 		padding-bottom: 10px;
-		display: inline-block;
+		/* display: inline-block; */
 		z-index: 1;
 		border-radius: 0px;
 		width: 100%;
 		font-family: 'Open Sans', sans-serif;
-		text-align: center;
+		text-align: left;
+		padding-left: 10px;
 	}
 	#menu :global(a) {
 		font-size: 13px;
 		color: var(--brandDarkBlue);
 		display: inline-block;
-		padding: 10px 12px;
+		padding: 5px;
+		padding-left: 8px;
+		padding-right: 8px;
 		margin-right: 10px;
-		width: 120px;
+		margin-bottom: 10px;
+		width: 110px;
 		border: 1px solid var(--brandDarkBlue);
 		border-radius: 4px;
 		text-decoration: none;
@@ -362,15 +369,15 @@
 	}
 
 	#menu :global(a):hover {
-	background-color: var(--brandDarkBlue);
-	color: var(--brandWhite);
+		background-color: var(--brandMedBlue);
+		color: var(--brandWhite);
 	}
 	#menu :global(a.active) {
-	background-color: var(--brandDarkBlue);
-	color: var(--brandWhite);
+		background-color: var(--brandDarkBlue);
+		color: var(--brandWhite);
 	}
 	#menu :global(a.active):hover {
-	background: var(--brandDarkBlue);
+		background: var(--brandDarkBlue);
 	}
 
 </style>
