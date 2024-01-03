@@ -3,14 +3,17 @@
 	import { onMount } from 'svelte';
 	import maplibregl, { LineBucket } from 'maplibre-gl';
 	import "../assets/maplibre-gl.css";
-	// import "../assets/global-styles.css";
+	import "../assets/global-styles.css";
 	import rinks from '../assets/toronto-rinks.geo.json';
 	import municipalBoundaries from '../assets/toronto-former-municipal-boundaries.geo.json';
-	import hexGrid from '../assets/toronto-hex-grid.geo.json';
+	import municipalPoints from '../assets/toronto-former-municipal-points.geo.json';
 	import travelTime from "../assets/walk_time.geo.json";
 	import notToronto from '../assets/toronto-not.geo.json';
 	import subwayLines from '../assets/subway_lines.geo.json';
 	import busRoutes from '../assets/busPath.geo.json';
+	import mapStyle from '../assets/style.json';
+
+	console.log(mapStyle);
 	
 
 	let pageHeight;
@@ -28,7 +31,7 @@
 
 		map = new maplibregl.Map({
 			container: 'map',
-			// style: './vector-tiles-vintage-v4.json',//'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+			style: mapStyle,
 			center: [-79.36, 43.715], // starting position
 			zoom: 10.5, // starting zoom;
 			minZoom: 9,
@@ -61,198 +64,214 @@
 		map.touchZoomRotate.disableRotation();
 		map.scrollZoom.disable();
 
-		map.addSource('TravelTime',{
-			type: 'geojson',
-			data: travelTime
-		})
-
-		//layer - travel time by walking
-		map.addLayer({
-			'id': 'walkTime',
-			'type': 'fill',
-			'source': 'TravelTime',
-			'layout': {
-				visibility: 'visible'
-			},
-			'paint': {
-				'fill-color': [
-					'step',
-					['get', 'walk_real'],
-					"#FF0000",
-					0, "#f1eef6",
-					15, '#bdc9e1',
-					30, '#74a9cf',
-					45, '#2b8cbe',
-					60, '#045a8d',
-				],
-				'fill-opacity': 1,
-				// 'fill-outline-color': 'white',
-			}
-		})
-
-		//layer - travel time by transit - weekday
-		map.addLayer({
-			'id': 'transitWeekday',
-			'type': 'fill',
-			'source': 'TravelTime',
-			'layout': {
-				visibility: 'none'
-			},
-			'paint': {
-				'fill-color': [
-					'step',
-					['get', 'transit_wd_real'],
-					"#FF0000",
-					0, "#f1eef6",
-					15, '#bdc9e1',
-					30, '#74a9cf',
-					45, '#2b8cbe',
-					60, '#045a8d',
-				],
-				'fill-opacity': 1,
-				// 'fill-outline-color': 'white',
-			}
-		})
-
-		//layer - travel time by transit - weekend
-		map.addLayer({
-			'id': 'transitWeekend',
-			'type': 'fill',
-			'source': 'TravelTime',
-			'layout': {
-				visibility: 'none'
-			},
-			'paint': {
-				'fill-color': [
-					'step',
-					['get', 'transit_we_real'],
-					"#FF0000",
-					0, "#f1eef6",
-					15, '#bdc9e1',
-					30, '#74a9cf',
-					45, '#2b8cbe',
-					60, '#045a8d',
-				],
-				'fill-opacity': 1,
-				// 'fill-outline-color': 'white',
-			}
-		})
-		
-
-		
-
-		map.addSource('notToronto', {
-			type: 'geojson',
-			data: notToronto
-		})
-		map.addLayer({
-			'id': 'notToronto',
-			'type': 'fill',
-			'source': 'notToronto',
-			'paint': {
-				'fill-color': '#ffffff',
-				'fill-opacity': 1,
-			}
-		})
-		
-		map.addSource('bus',{
-			type: 'geojson',
-			data : busRoutes
-		})
-		map.addLayer({
-			'id': 'bus',
-			'type': 'line',
-			'source': 'bus',
-			'layout':{
-				visibility: "visible"
-			},
-			'paint': {
-				'line-color': "#fff",
-				'line-width': 1,
-				'line-opacity': 0.2
-			}
-		})
-
-		map.addSource('osm-raster-tiles', {
-			'type': 'raster',
-			'tiles': ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
-			'tileSize': 256,
-			'minzoom': 0,
-			'maxzoom': 19
-		});
-		map.addLayer({
-			'id': 'osm-raster-tiles',
-			'type': 'raster',
-			'source': 'osm-raster-tiles',
-			'paint': {
-				'raster-saturation': -1,
-				'raster-opacity': 0.14
-			}
-		})	
-
-		
-
-		map.addSource('subway',{
-			type: 'geojson',
-			data : subwayLines
-		})
-		map.addLayer({
-			'id': 'subway',
-			'type': 'line',
-			'source': 'subway',
-			'layout':{
-				visibility: "visible"
-			},
-			'paint': {
-				'line-color': "#666464",
-				'line-width': 1
-			}
-		})
-
-		map.addSource('municipalBoundaries', {
-			type: 'geojson',
-			data: municipalBoundaries
-		})
-		map.addLayer({
-			'id': 'municipalBoundaries',
-			'type': 'line',
-			'source': 'municipalBoundaries',
-			'paint': {
-				'line-color': '#1E3765',
-				'line-opacity': 0.3
-			}
-		})
-
-		map.addLayer({
-			'id': 'notTorontoStroke',
-			'type': 'line',
-			'source': 'notToronto',
-			'paint': {
-				'line-color': "#1E3765",
-				'line-width': 1.5
-			}
-		})
-
-		map.addSource('rinks', {
-			type: 'geojson',
-			data: rinks
-		})
-		map.addLayer({
-			'id': 'rinks',
-			'type': 'circle',
-			'source': 'rinks',
-			'paint': {
-				"circle-color": "#000",
-				"circle-radius" : 4.2,
-				"circle-stroke-color": "#fff",
-				"circle-stroke-width": 2
-			}
-		})
-
-		
-
 
 		map.on('load', () => {
+
+			map.addSource('TravelTime',{
+				type: 'geojson',
+				data: travelTime
+			})
+
+			map.addLayer({
+				'id': 'walkTime',
+				'type': 'fill',
+				'source': 'TravelTime',
+				'layout': {
+					visibility: 'visible'
+				},
+				'paint': {
+					'fill-color': [
+						'step',
+						['get', 'walk_real'],
+						"#FF0000",
+						0, "#f1eef6",
+						15, '#bdc9e1',
+						30, '#74a9cf',
+						45, '#2b8cbe',
+						60, '#045a8d',
+					],
+					'fill-opacity': 1,
+				}
+			})
+
+			//layer - travel time by transit - weekday
+			map.addLayer({
+				'id': 'transitWeekday',
+				'type': 'fill',
+				'source': 'TravelTime',
+				'layout': {
+					visibility: 'none'
+				},
+				'paint': {
+					'fill-color': [
+						'step',
+						['get', 'transit_wd_real'],
+						"#FF0000",
+						0, "#f1eef6",
+						15, '#bdc9e1',
+						30, '#74a9cf',
+						45, '#2b8cbe',
+						60, '#045a8d',
+					],
+					'fill-opacity': 1,
+				}
+			})
+
+			//layer - travel time by transit - weekend
+			map.addLayer({
+				'id': 'transitWeekend',
+				'type': 'fill',
+				'source': 'TravelTime',
+				'layout': {
+					visibility: 'none'
+				},
+				'paint': {
+					'fill-color': [
+						'step',
+						['get', 'transit_we_real'],
+						"#FF0000",
+						0, "#f1eef6",
+						15, '#bdc9e1',
+						30, '#74a9cf',
+						45, '#2b8cbe',
+						60, '#045a8d',
+					],
+					'fill-opacity': 1,
+				}
+			})
+			
+
+			map.addSource('notToronto', {
+				type: 'geojson',
+				data: notToronto
+			})
+			map.addLayer({
+				'id': 'notToronto',
+				'type': 'fill',
+				'source': 'notToronto',
+				'paint': {
+					'fill-color': '#ffffff',
+					'fill-opacity': 1,
+				}
+			})
+			
+			map.addSource('bus',{
+				type: 'geojson',
+				data : busRoutes
+			})
+			map.addLayer({
+				'id': 'bus',
+				'type': 'line',
+				'source': 'bus',
+				'layout':{
+					visibility: "visible"
+				},
+				'paint': {
+					'line-color': "#fff",
+					'line-width': 1,
+					'line-opacity': 0.2
+				}
+			})
+
+			map.addSource('osm-raster-tiles', {
+				'type': 'raster',
+				'tiles': ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
+				'tileSize': 256,
+				'minzoom': 0,
+				'maxzoom': 19
+			});
+			map.addLayer({
+				'id': 'osm-raster-tiles',
+				'type': 'raster',
+				'source': 'osm-raster-tiles',
+				'paint': {
+					'raster-saturation': -1,
+					'raster-opacity': 0.14
+				}
+			})	
+
+			
+
+			map.addSource('subway',{
+				type: 'geojson',
+				data : subwayLines
+			})
+			map.addLayer({
+				'id': 'subway',
+				'type': 'line',
+				'source': 'subway',
+				'layout':{
+					visibility: "visible"
+				},
+				'paint': {
+					'line-color': "#666464",
+					'line-width': 1
+				}
+			})
+
+			map.addSource('municipalBoundaries', {
+				type: 'geojson',
+				data: municipalBoundaries
+			})
+			map.addLayer({
+				'id': 'municipalBoundaries',
+				'type': 'line',
+				'source': 'municipalBoundaries',
+				'paint': {
+					'line-color': '#1E3765',
+					'line-opacity': 0.3
+				}
+			})
+
+			map.addLayer({
+				'id': 'notTorontoStroke',
+				'type': 'line',
+				'source': 'notToronto',
+				'paint': {
+					'line-color': "#1E3765",
+					'line-width': 1.5
+				}
+			})
+
+			map.addSource('municipalPoints', {
+				type: 'geojson',
+				data: municipalPoints
+			})
+			map.addLayer({
+				'id': 'municipalPoints',
+				'type': 'symbol',
+				'source': 'municipalPoints',
+				'layout': {
+					'text-field': ['get', 'AREA_NAME'],
+					"text-font": ["TradeGothic LT Regular"],
+					'text-size': 13
+				},
+					'paint': {
+					'text-color': '#1E3765',
+					'text-halo-color': 'white',
+					'text-halo-width': 1,
+					'text-halo-blur': 2
+				}
+			})
+
+
+			map.addSource('rinks', {
+				type: 'geojson',
+				data: rinks
+			})
+			map.addLayer({
+				'id': 'rinks',
+				'type': 'circle',
+				'source': 'rinks',
+				'paint': {
+					"circle-color": "#000",
+					"circle-radius" : 4.2,
+					"circle-stroke-color": "#fff",
+					"circle-stroke-width": 2
+				}
+			})
+
+
 			const toggleableLayerIds = {"walkTime": "Walk", "transitWeekday": "Transit (Weekday)", "transitWeekend": "Transit (Weekend)"};
 
 			for (const id in toggleableLayerIds) {

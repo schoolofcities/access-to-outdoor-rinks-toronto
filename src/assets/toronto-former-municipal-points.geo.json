@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "formerMunicipalityPoints",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "AREA_NAME": "YORK" }, "geometry": { "type": "Point", "coordinates": [ -79.4776, 43.6851 ] } },
+{ "type": "Feature", "properties": { "AREA_NAME": "NORTH YORK" }, "geometry": { "type": "Point", "coordinates": [ -79.4305, 43.7519 ] } },
+{ "type": "Feature", "properties": { "AREA_NAME": "EAST YORK" }, "geometry": { "type": "Point", "coordinates": [ -79.3371, 43.7006 ] } },
+{ "type": "Feature", "properties": { "AREA_NAME": "SCARBOROUGH" }, "geometry": { "type": "Point", "coordinates": [ -79.2296, 43.7687 ] } },
+{ "type": "Feature", "properties": { "AREA_NAME": "ETOBICOKE" }, "geometry": { "type": "Point", "coordinates": [ -79.5549, 43.672 ] } },
+{ "type": "Feature", "properties": { "AREA_NAME": "TORONTO" }, "geometry": { "type": "Point", "coordinates": [ -79.3918, 43.6658 ] } }
+]
+}
