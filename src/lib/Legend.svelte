@@ -7,7 +7,7 @@
         ">60"
     ]
 
-    $: title1 = "Average Travel Time to the Nearest Outdoor Skating Rink"
+    $: title1 = "Travel Time to the Nearest Outdoor Skating Rink"
 
     $: colour = [
         "#f1eef6",

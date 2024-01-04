@@ -8,6 +8,7 @@
 	import BarGraph from '../lib/bar.svelte'
 	import Legend from "../lib/Legend.svelte";
 	import ChoroplethMap from "../lib/choropleth_map.svelte";
+	import VoronoiMap from "../lib/VoronoiMap.svelte";
 	import Clustered_bar from "../lib/clustered_bar.svelte";
 	import LegendCb from "../lib/LegendCB.svelte";
 	
@@ -95,7 +96,7 @@
 			Describe maps
 		</p>
 		
-		<p>
+		<!-- <p>
 			<BarGraph/>
 		</p>
 		
@@ -106,10 +107,26 @@
 		<p>
 			<Clustered_bar/>
 			<LegendCb/>
-		</p>
+		</p> -->
 		
 	</div>
 
+	<div class="text">
+
+		<h2>Catchment Areas</h2>
+
+		<p>
+			The City can also be mapped into zones . These are often calle . 
+		</p>
+
+		
+
+		
+	</div>
+
+	<VoronoiMap/>
+
+	
 	<div class="text">
 
 		<h2>Data & Methods</h2>
