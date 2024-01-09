@@ -7,7 +7,7 @@
 	import topImage from '../assets/top-image.png';
 	import BarGraph from '../lib/bar.svelte'
 	import Legend from "../lib/Legend.svelte";
-	import ChoroplethMap from "../lib/choropleth_map.svelte";
+	import ChoroplethMap from "../lib/ChoroplethMap.svelte";
 	import VoronoiMap from "../lib/VoronoiMap.svelte";
 	import Clustered_bar from "../lib/clustered_bar.svelte";
 	import LegendCb from "../lib/LegendCB.svelte";
@@ -96,9 +96,7 @@
 			Describe maps
 		</p>
 		
-		<!-- <p>
-			<BarGraph/>
-		</p>
+
 		
 		<p>
 			Describe bar graph......
@@ -107,7 +105,7 @@
 		<p>
 			<Clustered_bar/>
 			<LegendCb/>
-		</p> -->
+		</p>
 		
 	</div>
 
@@ -153,7 +151,7 @@
     .mapSmall {
 		width: 100%; /* Default to 100% width */
 		box-sizing: border-box;
-		margin-bottom: -1px;
+		margin-bottom: 5px;
 		border-top: solid 1px var(--brandLightBlue);
 		border-bottom: solid 1px var(--brandLightBlue);
     }

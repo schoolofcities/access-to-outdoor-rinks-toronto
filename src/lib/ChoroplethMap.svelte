@@ -9,27 +9,52 @@
     // var ledColours = ["#975e86", "#bb8f90", "#dec09a", "#ffeea3"] // // // //
 
     export let demoGP;
+
+    const barData = [
+            {
+                mode: "Walk",
+                populationTime: 34.3,
+                LIncomeTime: 33.5,
+                ImmigrantTime: 37.0,
+                VMTime: 39.7,
+            },
+            {
+                mode: "Transit",
+                populationTime: 23.4,
+                LIncomeTime: 22.7,
+                ImmigrantTime: 24.5,
+                VMTime: 25.4,
+            }
+        ];
     
     const demoGPs = {
         "PopDen":{
             "breaks":[2500,5000,7500],
             "name":"Population Density (# of people per sq.km)",
-            "breakSuffix": ""
+            "breakSuffix": "",
+            "walkTime": 34.3,
+            "transitTime": 23.4
         },
         "Immi%":{
             "breaks":[30,45,60],
             "name": "Immigrant (% of population)",
-            "breakSuffix": "%"
+            "breakSuffix": "%",
+            "walkTime": 37,
+            "transitTime": 24.5
         },
         "VM%":{
             "breaks":[30,45,60],
             "name": "Visible Minority (% of population)",
-            "breakSuffix": "%"
+            "breakSuffix": "%",
+            "walkTime": 39.7,
+            "transitTime": 25.4
         },
         "LIn%":{
-        "breaks":[5,10,15],
+            "breaks":[5,10,15],
             "name":"Low Income (% of population)",
-            "breakSuffix": "%"
+            "breakSuffix": "%",
+            "walkTime": 33.5,
+            "transitTime": 22.7
         }
     }
 
@@ -39,13 +64,12 @@
 
     let divWidth;
 	$: innerWidth = divWidth;
-	$: height = innerWidth / 1.5;
+	$: height = innerWidth / 1.55;
 
     $: console.log(divWidth);
 
     $: projection = geoMercator()
-            //.center([-78.155 - 0.00239*innerWidth + 0.000001125*innerWidth**2, 43.545 + 0.00045*innerWidth - 1.8e-7*innerWidth**2])
-            .center([-79.2 + 0.21 * ((600 - innerWidth) / 200), 43.727 - 0.02 * ((600 - innerWidth) / 200) ])
+            .center([-79.188 + 0.24 * ((600 - innerWidth) / 200), 43.727 - 0.02 * ((600 - innerWidth) / 200) ])
             .scale([62000 * innerWidth / 600])
             .angle([-17]);
 	$: path = geoPath(projection);
@@ -69,7 +93,7 @@
         <text class="label" x="5" y="22">{demoGPs[demoGP].name}</text>
         
         {#each border.features as data}
-            <path d={path(data)} stroke="#6FC7EA" stroke-width=6 fill=none opacity=0.23/>
+            <path d={path(data)} stroke="#1E3765" stroke-width=6 fill=none opacity=0.23/>
         {/each}
 
         {#each ct as data}
@@ -77,7 +101,7 @@
         {/each}
 
         {#each border.features as data}
-            <path d={path(data)} stroke="#6FC7EA" stroke-width=1 fill=none opacity=0.8/>
+            <path d={path(data)} stroke="#1E3765" stroke-width=1 fill=none opacity=0.8/>
         {/each}
 
         {#each toRinks as data}
@@ -100,7 +124,23 @@
 		<text class="label legend" x="145" y="55" text-anchor="middle">{demoGPs[demoGP]["breaks"][1]+ demoGPs[demoGP].breakSuffix}</text>
 		<text class="label legend" x="75" y="55" text-anchor="middle">{demoGPs[demoGP]["breaks"][0]+ demoGPs[demoGP].breakSuffix}</text>
         
+
+
     </svg>
+
+    <!-- <svg width={innerWidth} height="60">
+
+        <text class="label legend" x="50" y="{10}" text-anchor="start">Average travel time to nearest outdoor rink (overall population)</text>
+
+        <text class="label legend" x="46" y="{28}" text-anchor="end">Walk</text>
+        <rect class="bar" width="{250 * demoGPs[demoGP]["walkTime"] / 40}" height = "8" x="50" y="{20}" style="fill: #6D247A; stroke: white;"></rect>
+        <text class="label legend" x="{53 + 250 * demoGPs[demoGP]["walkTime"] / 40}" y="{28}" text-anchor="start">{demoGPs[demoGP]["walkTime"]} minutes</text>
+
+        <text class="label legend" x="46" y="{48}" text-anchor="end">Transit</text>
+        <rect class="bar" width="{250 * demoGPs[demoGP]["transitTime"] / 40}" height = "8" x="50" y="{40}" style="fill: #6D247A; stroke: white;"></rect>
+        <text class="label legend" x="{53 + 250 * demoGPs[demoGP]["transitTime"] / 40}" y="{48}" text-anchor="start">{demoGPs[demoGP]["transitTime"]} minutes</text>
+        
+    </svg> -->
 
 </div>
 
