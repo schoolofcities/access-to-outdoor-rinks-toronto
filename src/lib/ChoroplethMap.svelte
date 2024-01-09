@@ -4,6 +4,7 @@
     import ctData from "../assets/ctData.geo.json"; //the census data by CT
     import rinks from "../assets/toronto-rinks.geo.json";
     import border from "../assets/toronto-former-municipal-boundaries.geo.json"
+    import municipalPoints from '../assets/toronto-former-municipal-points.geo.json';
     
     var ledColours = ["#ede9fe", "#dad9f9", "#aaacd4", "#6e6d9f", "#383669"] 
     // var ledColours = ["#975e86", "#bb8f90", "#dec09a", "#ffeea3"] // // // //
@@ -118,6 +119,28 @@
             stroke-width="2"
             fill="black"/>
         {/each}
+
+        {#each municipalPoints.features as data}
+			<text
+				class="legend"
+				x={projection(data.geometry.coordinates)[0]}
+				y={projection(data.geometry.coordinates)[1]}
+				text-anchor="middle"
+				stroke="white"
+				stroke-width=2
+				font-size=12
+				opacity=0.7
+				>{data.properties.AREA_NAME}
+			</text>
+			<text
+				class="legend"
+				x={projection(data.geometry.coordinates)[0]}
+				y={projection(data.geometry.coordinates)[1]}
+				text-anchor="middle"
+				font-size=12
+				>{data.properties.AREA_NAME}
+			</text>
+		{/each}
 
         <rect class="box" width="70" height = "12" x="215" y="30" style="fill:{ledColours[3]}; stroke: white;"></rect>
         <rect class="box" width="70" height = "12" x="145" y="30" style="fill:{ledColours[2]}; stroke: white;"></rect>

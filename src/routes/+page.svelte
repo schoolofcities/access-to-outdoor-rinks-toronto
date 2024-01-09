@@ -105,13 +105,13 @@
 			Another way of looking at the geographic variations in the location of skating rinks is to map how many people each skating rink serves. The City of Toronto's <a href="https://www.toronto.ca/city-government/accountability-operations-customer-service/long-term-vision-plans-and-strategies/parks-and-recreation-facilities-master-plan/">Parks & Recreation Facilities Master Plan</a> states that there should be at least one outdoor skating rink per 100,000 residents. At over 50 rinks and a population of just over 3 million, the City is currently meeting it's internally defined goal. However, the picture is different when mapping the <a href="https://en.wikipedia.org/wiki/Catchment_area">catchment area</a> of each rink, and counting the population that resides in each one.
 		</p>
 		<p>
-			Check out the map below. We generated this from the travel times shown on the map at the top of this page. The map below is a type of <a href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi diagram</a> that in this case is derived by shortest walking time. For areas that are more than a 60 minute walk to a rink, we deem as inaccessible, and are coloured in grey. By counting the population in each catchment area, we can map how many residents each rink serves, assuming residents would usually skate at the rink nearest to them.
+			Check out the map below. We generated this from the travel times shown on the map at the top of this page, grouping the city into areas based on their nearest outdoor skating rink. This is a type of <a href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi diagram</a> that in this case is derived by shortest walking time. For areas that are more than a 60 minute walk to a rink, we deem as inaccessible, and are coloured in grey. By counting the population in each catchment area, we can map how many residents each rink serves, assuming residents would usually skate at the rink nearest to them.
 		</p>
 
 		<VoronoiMap/>
 
 		<p>
-			The darkest catchment areas on the map are for rinks that serve a large population. As the City continues to grow in population, it would be prudent to site any new outdoor skating rinks within these areas that currently have lower levels of access and are above the 100,000 residents per rink threshold. This would reduce existing inequalities in proximity to outdoor skating rinks, as well as even out the distribution of rinks which will help the City adequately meet it's internal planning goals.
+			The darkest catchment areas on the map are rinks that serve a large population. As the City continues to grow in population, it would be prudent to site any new outdoor skating rinks within these areas that currently have lower levels of access and are above the 100,000 residents per rink threshold. This would reduce existing inequalities in proximity to outdoor skating rinks, as well as even out the distribution of rinks which will help the City adequately meet it's internal planning goals.
 		</p>
 
 	</div>
@@ -121,10 +121,10 @@
 		<h2>Data & Methods</h2>
 
 		<p>
-			We created the isochrone map showing travel time to the nearest rink by 1) genearting a hexagonal grid (using QGIS) covering the City of Toronto, then 2) using network analysis software, <a href="https://github.com/r5py/r5py">R5Py</a>, to compute the travel time from each grid, and then 3) visualizing the minimum travel time for each hexagonal grid cell. The travel times for walking were derived from <a href="https://www.openstreetmap.org">OpenStreetMap</a> network data. The public transit travel times are based on <a href="https://open.toronto.ca/dataset/ttc-routes-and-schedules/">transit schedule data</a> (in GTFS format). The travel times by public transit were calculated for a typical weekday at 6pm and a Saturday at 2pm (two times we think residents are most likely to travel to rinks). The results were very similar so we averaged the two results into a single transit metric.
+			We created the isochrone map showing travel time to the nearest rink by 1) genearting a hexagonal grid (using <a href="https://qgis.org/en/site/">QGIS</a>) covering the City of Toronto, then 2) using network analysis software, <a href="https://github.com/r5py/r5py">R5Py</a>, to compute the travel time from each grid, and then 3) visualizing the minimum travel time for each hexagonal grid cell. The travel times for walking were derived from <a href="https://www.openstreetmap.org">OpenStreetMap</a> network data. The public transit travel times are based on <a href="https://open.toronto.ca/dataset/ttc-routes-and-schedules/">transit schedule data</a> (in GTFS format). The travel times by public transit were calculated for a typical weekday at 6pm and a Saturday at 2pm (two times we think residents are most likely to travel to rinks). The results were very similar so we averaged the two results into a single transit metric.
 		</p>
 		<p>
-			The demographic data are from the 2021 Canadian census. They are mapped at the census tract geography, which roughly correspond to neighbourhoods.
+			The demographic data are from the <a href="https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm?Lang=E">2021 Canadian census</a>. They are mapped at the census tract geography, which roughly correspond to neighbourhoods.
 		</p>
 		<p>
 			This webpage was built using the JavaScript framework <a href="https://svelte.dev/">Svelte</a>, with help from <a href="https://d3js.org/">D3</a> and <a href="https://maplibre.org/">MapLibre GL JS</a> to create the maps.
