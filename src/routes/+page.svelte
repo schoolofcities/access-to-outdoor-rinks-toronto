@@ -5,12 +5,9 @@
 
 	import "../assets/global-styles.css";
 	import topImage from '../assets/top-image.png';
-	import BarGraph from '../lib/bar.svelte'
 	import Legend from "../lib/Legend.svelte";
 	import ChoroplethMap from "../lib/ChoroplethMap.svelte";
 	import VoronoiMap from "../lib/VoronoiMap.svelte";
-	import Clustered_bar from "../lib/clustered_bar.svelte";
-	import LegendCb from "../lib/LegendCB.svelte";
 	
 </script>
 
@@ -24,28 +21,22 @@
 	<div class="text">
 		<div class="title">
 			<h1>The Geography of Toronto's Outdoor Skating Rinks</h1>
-			<p>Teresa Lau & Jeff Allen // January 2024</p>
+			<p>Jeff Allen & Teresa Lau /// January 2024</p>
 		</div>
 		<p>
-			Cities with colder climates, like many in Canada, ....
-
-			- Why skating rinks are important, cite 2-4 pieces of key literature/new articles
+			Outdoor skating rinks in cities with colder climates, like many cities in Canada, provide residents the opportunity to partake in outdoor physical and social activity, particularly during sub-zero temperatures which can limit other types of activities. They are import pieces of civic infrastructure in communities. When located in a neighbourhood, they improve it's walkability and contribute to good mixed-use urban fabric.
 		</p>
 		<p>
-			- Briefly on history of skating rinks in Toronto, how many are there? what do they offer 
-		</p>
-		
-		<p>
-			There are also a number of indoor skating rinks in Toronto, but most of these only have limited public skating hours, typically do not have public ice hockey times, and usually require a small fee for entrance. The outdoor rinks operated by the City are free, and at most times of day are available for leisure skating or ice hockey (the latter is typically scheduled based on age group). The <a href="https://www.toronto.ca/explore-enjoy/recreation/skating-winter-sports/public-leisure-skating">City's website </a> lists the schedules and details for each rink.
+			The City of Toronto has long operated publicly accessible outdoor skating rinks. Currently there are 54 City operated artificial ice rinks located in public parks, as well as a few independently operated outdoor rinks. Many of the City operated rinks have have boards and are used both for leisure skating and ice hockey (i.e. shinny); some rinks are skating trails which are only used for leisure skating; while some sites have both a rink with boards and a skating pad or trail used for leisure skating. The City operated rinks are free, and at most times of day are available for leisure skating or ice hockey (the latter is typically scheduled based on age group). The <a href="https://www.toronto.ca/explore-enjoy/recreation/skating-winter-sports/public-leisure-skating">City of Toronto's website</a> lists the schedules and details for each rink.
 		</p>
 		<p>
-			While there are over 50 outdoor rinks in Toronto, there are large swaths of the City that do not live close to a rink and thus have to travel long distances to access them.
+			Outdoor skating rinks in Toronto are quite popular, evidenced by <a href="https://www.cbc.ca/news/canada/toronto/reservations-toronto-artificial-ice-rinks-pandemic-lockdown-exercise-1.5826289">thousands of online reservations</a> due to limited spots during the COVID-19 pandemic and public backlash when a <a href="https://toronto.citynews.ca/2022/01/22/community-rallies-to-try-and-save-west-end-skating-rink/">rink closes</a>. Since they're free to use, they are generally an affordable option for winter activity (outside of the costs of buying or renting skates). Outdoor rinks also do no go unused during the warmer months; those with boards are often home to activities like lacrosse, pickle ball, and cycle polo, while skating trails are often used for roller skating or skateboarding.
 		</p>
 		<p>
-			Below we've created a map showing the locations of outdoor skating rinks, with the background of the map coloured by the travel time in each neighbourhood to the nearest skating rink. This is a type of <a href="https://en.wikipedia.org/wiki/Isochrone_map">isochrone map</a>, and it highlights which parts of the City have better or worse accessibility to outdoor skating rinks. The map also has a toggle for switching between travel times by walking and by transit.
+			While there are over 50 outdoor rinks in Toronto, there are large swaths of the City that do not live close to a rink and thus have to travel long distances to access them. To investigate where, we've created a map showing the locations of outdoor skating rinks in Toronto, with the background of the map coloured by the travel time in each neighbourhood to the nearest outdoor skating rink. This is a type of <a href="https://en.wikipedia.org/wiki/Isochrone_map">isochrone map</a>, and it highlights which parts of the City have better or worse accessibility to outdoor skating rinks. The map also has a toggle for switching between travel times by walking and by transit.
 		</p>
 
-		<br>
+		<div class="breakline"></div>
 
 		<Legend/>
 
@@ -58,20 +49,21 @@
 	<HexAccessMap/> 
 
 	<div class="text">
-
-		<p>
-			Describe pattern on map above here.
-		</p>
 		
 		<p>
-			The majority of the former City of Toronto being within a 30 minute walk to the nearest outdoor rink. Conversely, most Scarborough neighbourhoods do not have access to a nearby outdoor rink.
+			Overall we can see substantial differences in proximity to outdoor rinks across the City. Almost all of the former City of Toronto is within a 30 minute walk to the nearest outdoor rink. Conversely, residents in many Scarborough neighbourhoods have to travel further to access outdoor rinks. Etobicoke, on the other hand, has a greater number of outdoor rinks, most built prior to amalgamation in the late 90s.
 		</p>
-
+		<p>
+			Note that there are also a number of indoor skating rinks in Toronto, but we don't include them on this map, since indoor rinks have far less public skating hours and typically do not have public ice hockey times. They usually require a small fee for entrance. Skating indoors is also a different experience than outdoors. Part of the a attraction of outdoor skating rinks is doing something outside during the winter.
+		</p>
 
 		<h2>Who has access?</h2>
 	   
 		<p>
-			Are differences among demographic groups in ability to access to outdoor rinks. Below we create four maps, comparing data from the 2021 Canadian census to the location of outdoor skating rinks. The first map shows population density. This highlights how some of the most-dense neighbourhoods have rinks nearby, but several nodes of high density in the inner-suburbs do not.
+			Transportation researchers, such as the those part of the <a href="https://mobilizingjustice.ca/">Mobilizing Justice</a> partnership, are increasingly calling for identifying and remediating inequalities in accessibility to important destinations and services, particularly if inequalities exist among equity seeking groups like low-income households and recent immigrants.
+		</p>
+		<p>
+			 differences among different demographic groups, particularly those that ZZZZZ, in terms of their proximity to outdoor skating rinks. Below we create four maps, comparing data from the 2021 Canadian census to the location of outdoor skating rinks. The first map shows population density. This highlights how some of the most-dense neighbourhoods have rinks nearby, but several nodes of high density in the inner-suburbs do not. The next three maps ZZZZZZZ.
 		</p>
 	</div>
 
@@ -90,14 +82,11 @@
 		</div>
 	</div>
 
-
-	<div class="text">
+	<!-- <div class="text">
 		<p>
 			Describe maps
 		</p>
-		
-
-		
+				
 		<p>
 			Describe bar graph......
 		</p>
@@ -106,31 +95,42 @@
 			<Clustered_bar/>
 			<LegendCb/>
 		</p>
-		
-	</div>
+	</div> -->
 
 	<div class="text">
 
 		<h2>Catchment Areas</h2>
 
 		<p>
-			The City can also be mapped into zones . These are often calle . 
+			Another way of looking at the geographic variations in the location of skating rinks is to map how many people each skating rink serves. The City of Toronto's <a href="https://www.toronto.ca/city-government/accountability-operations-customer-service/long-term-vision-plans-and-strategies/parks-and-recreation-facilities-master-plan/">Parks & Recreation Facilities Master Plan</a> states that there should be at least one outdoor skating rink per 100,000 residents. At over 50 rinks and a population of just over 3 million, the City is currently meeting it's internally defined goal. However, the picture is different when mapping the <a href="https://en.wikipedia.org/wiki/Catchment_area">catchment area</a> of each rink, and counting the population that resides in each one.
+		</p>
+		<p>
+			Check out the map below. We generated this from the travel times shown on the map at the top of this page. The map below is a type of <a href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi diagram</a> that in this case is derived by shortest walking time. For areas that are more than a 60 minute walk to a rink, we deem as inaccessible, and are coloured in grey. By counting the population in each catchment area, we can map how many residents each rink serves, assuming residents would usually skate at the rink nearest to them.
 		</p>
 
-		
+		<VoronoiMap/>
 
-		
+		<p>
+			The darkest catchment areas on the map are for rinks that serve a large population. As the City continues to grow in population, it would be prudent to site any new outdoor skating rinks within these areas that currently have lower levels of access and are above the 100,000 residents per rink threshold. This would reduce existing inequalities in proximity to outdoor skating rinks, as well as even out the distribution of rinks which will help the City adequately meet it's internal planning goals.
+		</p>
+
 	</div>
 
-	<VoronoiMap/>
-
-	
-	<div class="text">
+	<div class="notes">
 
 		<h2>Data & Methods</h2>
 
 		<p>
-			Describe such here..
+			We created the isochrone map showing travel time to the nearest rink by 1) genearting a hexagonal grid (using QGIS) covering the City of Toronto, then 2) using network analysis software, <a href="https://github.com/r5py/r5py">R5Py</a>, to compute the travel time from each grid, and then 3) visualizing the minimum travel time for each hexagonal grid cell. The travel times for walking were derived from <a href="https://www.openstreetmap.org">OpenStreetMap</a> network data. The public transit travel times are based on <a href="https://open.toronto.ca/dataset/ttc-routes-and-schedules/">transit schedule data</a> (in GTFS format). The travel times by public transit were calculated for a typical weekday at 6pm and a Saturday at 2pm (two times we think residents are most likely to travel to rinks). The results were very similar so we averaged the two results into a single transit metric.
+		</p>
+		<p>
+			The demographic data are from the 2021 Canadian census. They are mapped at the census tract geography, which roughly correspond to neighbourhoods.
+		</p>
+		<p>
+			This webpage was built using the JavaScript framework <a href="https://svelte.dev/">Svelte</a>, with help from <a href="https://d3js.org/">D3</a> and <a href="https://maplibre.org/">MapLibre GL JS</a> to create the maps.
+		</p>
+		<p>
+			Data and code for this work are on <a href="https://github.com/schoolofcities/access-to-outdoor-rinks-toronto">GitHub</a>.
 		</p>
 
 	</div>
@@ -138,6 +138,12 @@
 </main>
 
 <style>
+
+	.breakline {
+		width: 100%;
+		border-top: solid 1px var(--brandLightBlue);
+		height: 15px;
+	}
 	
     /* Default styles for the container and divs */
     .mapGrid {
@@ -151,7 +157,7 @@
     .mapSmall {
 		width: 100%; /* Default to 100% width */
 		box-sizing: border-box;
-		margin-bottom: 5px;
+		margin-bottom: 40px;
 		border-top: solid 1px var(--brandLightBlue);
 		border-bottom: solid 1px var(--brandLightBlue);
     }

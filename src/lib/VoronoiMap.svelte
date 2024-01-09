@@ -39,7 +39,7 @@
 
 		{#each hexVoronoi.features as data}
 			{#if data.properties.c === "l"}
-				<path d={path(data)} stroke="#fff" stroke-width=0.5 fill="#f5e3ed" opacity=0.8/>
+				<path d={path(data)} stroke="#fff" stroke-width=0.5 fill="#f0d5e4" opacity=0.8/>
 			{:else if data.properties.c === "m"}
 				<path d={path(data)} stroke="#fff" stroke-width=0.5 fill="#dd9ec1" opacity=0.8/>
 			{:else if data.properties.c === "h"}
@@ -68,13 +68,13 @@
 			fill="black"/>
 		{/each}
 
-		<text class="label" x="5" y="22">Population in each outdoor rink's catchment area</text>
+		<text class="label" x="5" y="22">Total population in each outdoor rink's catchment area</text>
 		
 		
 
         <rect class="box" width="70" height = "16" x="145" y="35" style="fill:#ab1368; stroke: white;"></rect>
 		<rect class="box" width="70" height = "16" x="75" y="35" style="fill:#dd9ec1; stroke: white;"></rect>
-		<rect class="box" width="70" height = "16" x="5" y="35" style="fill:#f5e3ed; stroke: white;"></rect>
+		<rect class="box" width="70" height = "16" x="5" y="35" style="fill:#f0d5e4; stroke: white;"></rect>
 		
 		<text class="legend" x="25" y="48">{"< 50k"}</text>
 		<text class="legend" x="82" y="48">{"50k - 100k"}</text>
@@ -102,11 +102,6 @@
 		stroke: var(--brandWhite);
 		stroke-width: 1px;
 		fill: var(--brandGray90)
-	}
-	.ct {
-			stroke: var(--brandWhite);
-			stroke-width: 0.5px;
-			opacity: 1;
 	}
 	.label {
 			font-size: 14px;

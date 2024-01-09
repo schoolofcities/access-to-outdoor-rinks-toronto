@@ -7,7 +7,7 @@
 	import rinks from '../assets/toronto-rinks.geo.json';
 	import municipalBoundaries from '../assets/toronto-former-municipal-boundaries.geo.json';
 	import municipalPoints from '../assets/toronto-former-municipal-points.geo.json';
-	import travelTime from "../assets/walk_time.geo.json";
+	import travelTime from "../assets/toronto-hex-grid-v2.geo.json";
 	import notToronto from '../assets/toronto-not.geo.json';
 	import subwayLines from '../assets/subway_lines.geo.json';
 	import busRoutes from '../assets/busPath.geo.json';
@@ -82,7 +82,7 @@
 				'paint': {
 					'fill-color': [
 						'step',
-						['get', 'walk_real'],
+						['get', 'w'],
 						"#FF0000",
 						0, "#f1eef6",
 						15, '#bdc9e1',
@@ -105,7 +105,7 @@
 				'paint': {
 					'fill-color': [
 						'step',
-						['get', 'transit_wd_real'],
+						['get', 't'],
 						"#FF0000",
 						0, "#f1eef6",
 						15, '#bdc9e1',
@@ -128,7 +128,7 @@
 				'paint': {
 					'fill-color': [
 						'step',
-						['get', 'transit_we_real'],
+						['get', 't'],
 						"#FF0000",
 						0, "#f1eef6",
 						15, '#bdc9e1',
@@ -272,7 +272,7 @@
 			})
 
 
-			const toggleableLayerIds = {"walkTime": "Walk", "transitWeekday": "Transit (Weekday)", "transitWeekend": "Transit (Weekend)"};
+			const toggleableLayerIds = {"walkTime": "Walk", "transitWeekday": "Public Transit"};
 
 			for (const id in toggleableLayerIds) {
 
@@ -337,7 +337,7 @@
 
 <div id="map" style="height: {mapHeight}px"></div>
 
-<p>Data Sources: OpenStreetMap, City of Toronto</p>
+<p>Data Sources: OpenStreetMap, City of Toronto, Toronto Transit Commission</p>
 
 <style>
 	#map {
@@ -369,7 +369,7 @@
 		width: 100%;
 		font-family: 'Open Sans', sans-serif;
 		text-align: left;
-		padding-left: 10px;
+		padding-left: 15px;
 	}
 	#menu :global(a) {
 		font-size: 13px;
@@ -380,7 +380,7 @@
 		padding-right: 8px;
 		margin-right: 10px;
 		margin-bottom: 10px;
-		width: 110px;
+		width: 100px;
 		border: 1px solid var(--brandDarkBlue);
 		border-radius: 4px;
 		text-decoration: none;

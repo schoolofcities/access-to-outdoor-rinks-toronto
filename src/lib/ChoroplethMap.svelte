@@ -32,6 +32,7 @@
             "breaks":[2500,5000,7500],
             "name":"Population Density (# of people per sq.km)",
             "breakSuffix": "",
+            "barChartText": "overall population",
             "walkTime": 34.3,
             "transitTime": 23.4
         },
@@ -39,6 +40,7 @@
             "breaks":[30,45,60],
             "name": "Immigrant (% of population)",
             "breakSuffix": "%",
+            "barChartText": "immigrant population",
             "walkTime": 37,
             "transitTime": 24.5
         },
@@ -46,6 +48,7 @@
             "breaks":[30,45,60],
             "name": "Visible Minority (% of population)",
             "breakSuffix": "%",
+            "barChartText": "visible minorities",
             "walkTime": 39.7,
             "transitTime": 25.4
         },
@@ -53,6 +56,7 @@
             "breaks":[5,10,15],
             "name":"Low Income (% of population)",
             "breakSuffix": "%",
+            "barChartText": "low-income residents",
             "walkTime": 33.5,
             "transitTime": 22.7
         }
@@ -128,9 +132,9 @@
 
     </svg>
 
-    <!-- <svg width={innerWidth} height="60">
+    <svg width={innerWidth} height="60">
 
-        <text class="label legend" x="50" y="{10}" text-anchor="start">Average travel time to nearest outdoor rink (overall population)</text>
+        <text class="label legend" x="50" y="{10}" text-anchor="start">Average travel time to nearest rink ({demoGPs[demoGP]["barChartText"]})</text>
 
         <text class="label legend" x="46" y="{28}" text-anchor="end">Walk</text>
         <rect class="bar" width="{250 * demoGPs[demoGP]["walkTime"] / 40}" height = "8" x="50" y="{20}" style="fill: #6D247A; stroke: white;"></rect>
@@ -140,7 +144,7 @@
         <rect class="bar" width="{250 * demoGPs[demoGP]["transitTime"] / 40}" height = "8" x="50" y="{40}" style="fill: #6D247A; stroke: white;"></rect>
         <text class="label legend" x="{53 + 250 * demoGPs[demoGP]["transitTime"] / 40}" y="{48}" text-anchor="start">{demoGPs[demoGP]["transitTime"]} minutes</text>
         
-    </svg> -->
+    </svg>
 
 </div>
 
@@ -157,15 +161,18 @@
         fill: var(--brandGray90)
     }
     .ct {
-            stroke: var(--brandWhite);
-            stroke-width: 0.5px;
-            opacity: 1;
+        stroke: var(--brandWhite);
+        stroke-width: 0.5px;
+        opacity: 0.75;
+    }
+    .box {
+        opacity: 0.75;
     }
     .label {
-            font-size: 14px;
-            font-weight: 600;
-            fill: var(--brandDarkBlue);
-        }
+        font-size: 14px;
+        font-weight: 600;
+        fill: var(--brandDarkBlue);
+    }
     .legend {
         font-size: 13px;
         font-weight: 400;

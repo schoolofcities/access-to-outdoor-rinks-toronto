@@ -88,6 +88,16 @@ background-size: 52px 52px;
     padding-right: 15px;
 }
 
+.notes {
+    background-color: none;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    padding-top: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 h1 {
     font-family: TradeGothicBold;
     font-size: 34px;
@@ -121,6 +131,15 @@ p {
     text-align: left;
     font-size: 16px;
     line-height: 24px;
+}
+
+
+.notes p {
+    font-family: RobotoRegular;
+    color: var(--brandDarkBlue);
+    text-align: left;
+    font-size: 14px;
+    line-height: 20px;
 }
 
 .bold {

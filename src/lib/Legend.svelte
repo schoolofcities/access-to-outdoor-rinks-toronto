@@ -74,17 +74,7 @@
 
 
 <style>
-    .graphTitle {
-        color: var(--brandDarkBlue);
-        font-size: 16px;
-        font-weight: 700;
-        line-height: 30px;
-        text-decoration: underline;
-        margin-left: 0px;
-        margin-top: 10px;
-        margin-right: 0px;
-        margin-bottom: 0px;
-    }
+
     .box {
             stroke-width: 0.5px;
             stroke: rgb(206, 206, 206);
