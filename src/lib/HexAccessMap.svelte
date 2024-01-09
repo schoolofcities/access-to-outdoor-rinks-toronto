@@ -1,7 +1,7 @@
 <script>
 
 	import { onMount } from 'svelte';
-	import maplibregl, { LineBucket } from 'maplibre-gl';
+	import maplibregl, { LineBucket, Popup } from 'maplibre-gl';
 	import "../assets/maplibre-gl.css";
 	import "../assets/global-styles.css";
 	import rinks from '../assets/toronto-rinks.geo.json';
@@ -323,7 +323,44 @@
 
 
 		})
+
+		map.on('click', 'rinks', (e) => {
+			const coordinates = e.features[0].geometry.coordinates.slice();
+			const description = e.features[0].properties["Parent Asset Name"];
+
+			while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+				coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+			}
+
+			const popup = new Popup()
+				.setLngLat(coordinates)
+				.setHTML(description)
+				.addTo(map);
+
+			const popupContent = popup._content;
+			if (popupContent) {
+				popupContent.style.padding = '6px 12px 6px 6px'
+				popupContent.style.backgroundColor = '#ffffff';
+				popupContent.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.2)';
+				popupContent.style.opacity = 0.95;
+			}
+		});
+
+			// Change the cursor to a pointer when hovering over the points layer.
+		map.on('mouseenter', 'rinks', () => {
+			map.getCanvas().style.cursor = 'pointer';
+		});
+
+			// Change it back to a pointer when it leaves.
+		map.on('mouseleave', 'rinks', () => {
+			map.getCanvas().style.cursor = '';
+		});
+
 	});
+
+	
+
+
 
 
 </script>
