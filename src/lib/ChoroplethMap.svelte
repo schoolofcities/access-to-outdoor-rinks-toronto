@@ -142,14 +142,24 @@
 			</text>
 		{/each}
 
-        <rect class="box" width="70" height = "12" x="215" y="30" style="fill:{ledColours[3]}; stroke: white;"></rect>
-        <rect class="box" width="70" height = "12" x="145" y="30" style="fill:{ledColours[2]}; stroke: white;"></rect>
-		<rect class="box" width="70" height = "12" x="75" y="30" style="fill:{ledColours[1]}; stroke: white;"></rect>
-		<rect class="box" width="70" height = "12" x="5" y="30" style="fill:{ledColours[0]}; stroke: white;"></rect>
+        <rect class="box" width="40" height = "12" x="125" y="30" style="fill:{ledColours[3]}; stroke: white;"></rect>
+        <rect class="box" width="40" height = "12" x="85" y="30" style="fill:{ledColours[2]}; stroke: white;"></rect>
+		<rect class="box" width="40" height = "12" x="45" y="30" style="fill:{ledColours[1]}; stroke: white;"></rect>
+		<rect class="box" width="40" height = "12" x="5" y="30" style="fill:{ledColours[0]}; stroke: white;"></rect>
 
-        <text class="label legend" x="215" y="55" text-anchor="middle">{demoGPs[demoGP]["breaks"][2]+ demoGPs[demoGP].breakSuffix}</text>
-		<text class="label legend" x="145" y="55" text-anchor="middle">{demoGPs[demoGP]["breaks"][1]+ demoGPs[demoGP].breakSuffix}</text>
-		<text class="label legend" x="75" y="55" text-anchor="middle">{demoGPs[demoGP]["breaks"][0]+ demoGPs[demoGP].breakSuffix}</text>
+        <text class="label legend" x="125" y="55" text-anchor="middle">{demoGPs[demoGP]["breaks"][2]+ demoGPs[demoGP].breakSuffix}</text>
+		<text class="label legend" x="85" y="55" text-anchor="middle">{demoGPs[demoGP]["breaks"][1]+ demoGPs[demoGP].breakSuffix}</text>
+		<text class="label legend" x="45" y="55" text-anchor="middle">{demoGPs[demoGP]["breaks"][0]+ demoGPs[demoGP].breakSuffix}</text>
+
+        <circle
+            class="rink"
+            cx=180
+            cy=37
+            r="4"
+            stroke="white"
+            stroke-width="2"
+        fill="black"/>
+        <text class="label legend" x="186" y="41" text-anchor="left">Outdoor skating rink</text>
         
 
 
