@@ -108,6 +108,15 @@
 		<rect class="box" width="16" height = "16" x="225" y="35" style="fill:#888888; stroke: white;"></rect>
 		<text class="legend" x="243" y="48">60+ min to nearest rink</text>
 
+		<circle
+            class="rink"
+            cx=382
+            cy=44
+            r="4"
+            stroke="white"
+            stroke-width="2"
+        fill="black"/>
+
 	</svg>
 
 </div>
