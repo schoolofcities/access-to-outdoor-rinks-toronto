@@ -35,7 +35,7 @@
 
 		
 		{#each border.features as data}
-			<path d={path(data)} stroke="#6FC7EA" stroke-width=6 fill=none opacity=0.23/>
+			<path d={path(data)} stroke="#1E3765" stroke-width=6 fill=none opacity=0.23/>
 		{/each}
 
 		{#each hexVoronoi.features as data}
@@ -51,11 +51,11 @@
 		{/each}
 
 		{#each notToronto.features as data}
-			<path d={path(data)} stroke="#6FC7EA" stroke-width=0 fill="white" opacity=0.99/>
+			<path d={path(data)} stroke="#1E3765" stroke-width=0 fill="white" opacity=0.99/>
 		{/each}
 
 		{#each border.features as data}
-			<path d={path(data)} stroke="#6FC7EA" stroke-width=1 fill=none opacity=0.8/>
+			<path d={path(data)} stroke="#1E3765" stroke-width=1 fill=none opacity=0.8/>
 		{/each}
 
 		{#each rinks.features as data}
