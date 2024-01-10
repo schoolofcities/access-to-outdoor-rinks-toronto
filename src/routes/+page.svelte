@@ -124,6 +124,10 @@
 		<h2>Data & Methods</h2>
 
 		<p>
+			The photo at the top of this page is of Christie Pits in 1923, and is sourced from the Toronto Archives. You can download the full original image <a href="./access-to-outdoor-rinks-toronto/torontoarchives_s0372_ss0052_it1097.jpg">here</a>.
+		</p>
+
+		<p>
 			We created the isochrone map showing travel time to the nearest rink by 1) genearting a hexagonal grid (using <a href="https://qgis.org/en/site/">QGIS</a>) covering the City of Toronto, then 2) using network analysis software, <a href="https://github.com/r5py/r5py">R5Py</a>, to compute the travel time from each grid, and then 3) visualizing the minimum travel time for each hexagonal grid cell. The travel times for walking were derived from <a href="https://www.openstreetmap.org">OpenStreetMap</a> network data. The public transit travel times are based on <a href="https://open.toronto.ca/dataset/ttc-routes-and-schedules/">transit schedule data</a> (in GTFS format). The travel times by public transit were calculated for a typical weekday at 6pm and a Saturday at 2pm (two times we think residents are most likely to travel to rinks). The results were very similar so we averaged the two results into a single transit metric.
 		</p>
 		<p>
