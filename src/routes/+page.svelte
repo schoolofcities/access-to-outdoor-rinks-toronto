@@ -24,7 +24,7 @@
 			<p>Jeff Allen & Teresa Lau /// January 2024</p>
 		</div>
 		<p>
-			Outdoor skating rinks in cities with colder climates, like many cities in Canada, provide residents the opportunity to partake in outdoor physical and social activity, particularly during sub-zero temperatures which can limit other types of activities. They are import pieces of civic infrastructure in communities. When located in a neighbourhood, they improve it's walkability and contribute to good mixed-use urban fabric.
+			Outdoor skating rinks in cities with colder climates, like many cities in Canada, are important pieces of civic infrastructure in communities. They provide residents the opportunity to affordably partake in outdoor physical activity and <a href="https://www.cogitatiopress.com/urbanplanning/article/view/3430">social interaction</a>, particularly on winter days when other types of outdoor activities are limited due to low temperatures or snowfall.
 		</p>
 		<p>
 			The City of Toronto has long operated publicly accessible outdoor skating rinks. Currently there are 54 City operated artificial ice rinks located in public parks, as well as a few independently operated outdoor rinks. Many of the City operated rinks have have boards and are used both for leisure skating and ice hockey (i.e. shinny); some rinks are skating trails which are only used for leisure skating; while some sites have both a rink with boards and a skating pad or trail used for leisure skating. The City operated rinks are free, and at most times of day are available for leisure skating or ice hockey (the latter is typically scheduled based on age group). The <a href="https://www.toronto.ca/explore-enjoy/recreation/skating-winter-sports/public-leisure-skating">City of Toronto's website</a> lists the schedules and details for each rink.
@@ -33,7 +33,10 @@
 			Outdoor skating rinks in Toronto are quite popular, evidenced by <a href="https://www.cbc.ca/news/canada/toronto/reservations-toronto-artificial-ice-rinks-pandemic-lockdown-exercise-1.5826289">thousands of online reservations</a> due to limited spots during the COVID-19 pandemic and public backlash when a <a href="https://toronto.citynews.ca/2022/01/22/community-rallies-to-try-and-save-west-end-skating-rink/">rink closes</a>. Since they're free to use, they are generally an affordable option for winter activity (outside of the costs of buying or renting skates). Outdoor rinks also do no go unused during the warmer months; those with boards are often home to activities like lacrosse, pickle ball, and cycle polo, while skating trails are often used for roller skating or skateboarding.
 		</p>
 		<p>
-			While there are over 50 outdoor rinks in Toronto, there are large swaths of the City that do not live close to a rink and thus have to travel long distances to access them. To investigate where, we've created a map showing the locations of outdoor skating rinks in Toronto, with the background of the map coloured by the travel time in each neighbourhood to the nearest outdoor skating rink. This is a type of <a href="https://en.wikipedia.org/wiki/Isochrone_map">isochrone map</a>, and it highlights which parts of the City have better or worse accessibility to outdoor skating rinks. The map also has a toggle for switching between travel times by walking and by transit.
+			While there are over 50 outdoor rinks in Toronto, there are large swaths of the City that do not live close to a rink and thus have to travel long distances to access them. To investigate how this varies across the City we've created a map showing the locations of outdoor skating rinks in Toronto, with the background of the map coloured by the travel time in each neighbourhood to the nearest outdoor skating rink. This is a type of <a href="https://en.wikipedia.org/wiki/Isochrone_map">isochrone map</a>, and it highlights which parts of the City have better or worse accessibility to outdoor skating rinks. 
+		</p>
+		<p>
+			The map has a toggle for switching between travel times by walking and by transit. Clicking on a rink will show a popup displaying the name of the rink.
 		</p>
 
 		<div class="breakline"></div>
@@ -63,7 +66,7 @@
 			Transportation researchers, such as the those part of the <a href="https://mobilizingjustice.ca/">Mobilizing Justice</a> partnership, are increasingly calling for identifying and remediating inequalities in accessibility to important destinations and services, particularly if inequalities exist among equity seeking groups like low-income households and recent immigrants.
 		</p>
 		<p>
-			 differences among different demographic groups, particularly those that ZZZZZ, in terms of their proximity to outdoor skating rinks. Below we create four maps, comparing data from the 2021 Canadian census to the location of outdoor skating rinks. The first map shows population density. This highlights how some of the most-dense neighbourhoods have rinks nearby, but several nodes of high density in the inner-suburbs do not. The next three maps ZZZZZZZ.
+			Below we create four maps, comparing demographic data from the <a href="https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm?Lang=E">2021 Canadian Census</a> to the location of outdoor skating rinks. The first map shows population density. This highlights how some of the most-dense neighbourhoods have rinks nearby, but several nodes of high density in the inner-suburbs do not. The next three maps compare the location of outdoor rinks to three demographic groups; low-income residents, visible minorities, and immigrants. Each of these maps is coloured by the percent in each group relative to the overall population in the neighbourhood. We find that immigrants and visibile minorities have worse accessibility to outdoor rinks relative to the overall population, party due to higher proportions in the inner-suburb Scarborough. The average travel time to the nearest rink for each demographic group is displayed below each map.
 		</p>
 	</div>
 
@@ -111,7 +114,7 @@
 		<VoronoiMap/>
 
 		<p>
-			The darkest catchment areas on the map are rinks that serve a large population. As the City continues to grow in population, it would be prudent to site any new outdoor skating rinks within these areas that currently have lower levels of access and are above the 100,000 residents per rink threshold. This would reduce existing inequalities in proximity to outdoor skating rinks, as well as even out the distribution of rinks which will help the City adequately meet it's internal planning goals.
+			The darkest areas on the map indicate outdoor rinks that serve a large population. As the City continues to grow in population, it would be prudent to site any new outdoor skating rinks within these areas that currently have lower levels of access and are above the 100,000 residents per rink threshold. This would reduce existing inequalities in proximity to outdoor skating rinks, as well as even out the distribution of rinks which will help the City adequately meet it's internal planning goals.
 		</p>
 
 	</div>
