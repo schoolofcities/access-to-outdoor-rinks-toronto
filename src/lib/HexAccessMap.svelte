@@ -7,7 +7,7 @@
 	import rinks from '../assets/toronto-rinks.geo.json';
 	import municipalBoundaries from '../assets/toronto-former-municipal-boundaries.geo.json';
 	import municipalPoints from '../assets/toronto-former-municipal-points.geo.json';
-	import travelTime from "../assets/toronto-hex-grid-v2.geo.json";
+	import travelTime from "../assets/toronto-hex-grid.geo.json";
 	import notToronto from '../assets/toronto-not.geo.json';
 	import subwayLines from '../assets/subway_lines.geo.json';
 	import busRoutes from '../assets/busPath.geo.json';
