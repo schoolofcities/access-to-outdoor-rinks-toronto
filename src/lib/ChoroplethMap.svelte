@@ -98,7 +98,7 @@
         <text class="label" x="5" y="22">{demoGPs[demoGP].name}</text>
         
         {#each border.features as data}
-            <path d={path(data)} stroke="#1E3765" stroke-width=6 fill=none opacity=0.23/>
+            <path d={path(data)} stroke="#1E3765" stroke-width=1 fill=none opacity=0.23/>
         {/each}
 
         {#each ct as data}
@@ -127,7 +127,7 @@
 				y={projection(data.geometry.coordinates)[1]}
 				text-anchor="middle"
 				stroke="white"
-				stroke-width=2
+				stroke-width=2.5
 				font-size=12
 				opacity=0.7
 				>{data.properties.AREA_NAME}
@@ -167,7 +167,7 @@
 
     <svg width={innerWidth} height="60">
 
-        <text class="label legend" x="50" y="{10}" text-anchor="start">Average travel time to nearest rink ({demoGPs[demoGP]["barChartText"]})</text>
+        <text class="label" x="50" y="{10}" text-anchor="start">Average travel time to nearest rink ({demoGPs[demoGP]["barChartText"]}):</text>
 
         <text class="label legend" x="46" y="{28}" text-anchor="end">Walk</text>
         <rect class="bar" width="{250 * demoGPs[demoGP]["walkTime"] / 40}" height = "8" x="50" y="{20}" style="fill: #6D247A; stroke: white;"></rect>
@@ -202,7 +202,7 @@
         opacity: 0.75;
     }
     .label {
-        font-size: 14px;
+        font-size: 15px;
         font-weight: 600;
         fill: var(--brandDarkBlue);
     }

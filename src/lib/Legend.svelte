@@ -7,7 +7,7 @@
         ">60"
     ]
 
-    $: title1 = "Travel Time to the Nearest Outdoor Skating Rink"
+    $: title1 = "Travel Time to the Nearest Outdoor Skating Rink (Minutes):"
 
     $: colour = [
         "#f1eef6",
@@ -18,57 +18,55 @@
     ]
 </script>
 
+<span class="legend-title">{title1} </span>
 
-<svg width="350" height="50">
-    <text class="legend-title" x="0" y="18">{title1} </text>
+<svg width="250" height="30">
     <rect
         class="box"
-        width="45"
-        height="20"
-        x="1"
-        y="30"
+        width="50"
+        height="19"
+        x="0"
+        y="0"
         style="fill:{colour[0]};"
     />
     <rect
         class="box"
-        width="45"
-        height="20"
+        width="50"
+        height="19"
         x="50"
-        y="30"
+        y="0"
         style="fill:{colour[1]};"
     />
     <rect
         class="box"
-        width="45"
-        height="20"
+        width="50"
+        height="19"
         x="100"
-        y="30"
+        y="0"
         style="fill:{colour[2]};"
     />
     <rect
         class="box"
-        width="45"
-        height="20"
+        width="50"
+        height="19"
         x="150"
-        y="30"
+        y="0"
         style="fill:{colour[3]};"
     />
     <rect
         class="box"
-        width="45"
-        height="20"
+        width="50"
+        height="19"
         x="200"
-        y="30"
+        y="0"
         style="fill:{colour[4]};"
     />
 
-    <text class="legend-label" x="14" y="45">{labels[0]}</text>
-	<text class="legend-label" x="56" y="45">{labels[1]}</text>
-	<text class="legend-label" x="106" y="45">{labels[2]}</text>
-	<text class="legend-label legend-label-dark" x="156" y="45">{labels[3]}</text>
-	<text class="legend-label legend-label-dark" x="210" y="45">{labels[4]}</text>
-
-    <text class="legend-label legend-label-minutes" x="250" y="45" color="red">minutes</text>
+    <text class="legend-label" x="13" y="15">{labels[0]}</text>
+	<text class="legend-label" x="58" y="15">{labels[1]}</text>
+	<text class="legend-label legend-label-dark" x="110" y="15">{labels[2]}</text>
+	<text class="legend-label legend-label-dark" x="158" y="15">{labels[3]}</text>
+	<text class="legend-label legend-label-dark" x="213" y="15">{labels[4]}</text>
 
 </svg>
 
@@ -81,7 +79,8 @@
         }
     .legend-label {
             font-size: 13px;
-            fill: rgb(0, 0, 0);
+            fill:var(--brandDarkBlue);
+            font-weight: 400;
         }
 
     .legend-label-minutes {
@@ -96,10 +95,10 @@
     }
         
     .legend-title {
-            font-family: RobotoBold;
+            font-family: RobotoRegular;
             /* font-weight: 600; */
             font-size: 16px;
-            fill: var(--brandDarkBlue);
+            color: var(--brandDarkBlue);
             margin-bottom: 0px;
             vertical-align: top;
         }

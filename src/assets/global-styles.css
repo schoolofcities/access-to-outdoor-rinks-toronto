@@ -90,7 +90,7 @@ background-size: 52px 52px;
 
 .notes {
     background-color: none;
-    max-width: 600px;
+    max-width: 1200px;
     margin: 0 auto;
     position: relative;
     padding-top: 30px;
@@ -118,10 +118,11 @@ h2 {
 }
 
 h3 {
-    text-align: left;
+    text-align: center;
     font-family: TradeGothicBold;
-    font-size: 22px;
-    text-decoration: underline;
+    font-size: 18px;
+    margin-top:20px;
+    border-bottom: solid 1px var(--brandDarkBlue);
     color: var(--brandDarkBlue);
 }
 

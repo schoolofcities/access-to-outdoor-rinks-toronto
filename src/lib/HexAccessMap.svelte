@@ -381,8 +381,8 @@
 		width: 100%;
 		margin: 0 auto;
 		max-width: 1200px;
-		border-top: 1px solid var(--brandLightBlue);
-		border-bottom: 1px solid var(--brandLightBlue);
+		border-top: 1px solid var(--brandGray);
+		border-bottom: 1px solid var(--brandGray);
 		background-color: white;
 	}
 	p {
@@ -398,25 +398,25 @@
 		max-width: 750px;
 		background: #fff;
 		position: relative;
-		padding-top: -10px;
-		padding-bottom: 10px;
+		padding-top: 5px;
+		padding-bottom: 5px;
 		/* display: inline-block; */
 		z-index: 1;
 		border-radius: 0px;
 		width: 100%;
 		font-family: 'Open Sans', sans-serif;
-		text-align: left;
-		padding-left: 15px;
+		text-align: center;
 	}
 	#menu :global(a) {
 		font-size: 13px;
 		color: var(--brandDarkBlue);
 		display: inline-block;
-		padding: 5px;
+		padding: 8px;
 		padding-left: 8px;
 		padding-right: 8px;
 		margin-right: 10px;
-		margin-bottom: 10px;
+		margin-left: 10px;
+		margin-bottom: 8px;
 		width: 100px;
 		border: 1px solid var(--brandDarkBlue);
 		border-radius: 4px;

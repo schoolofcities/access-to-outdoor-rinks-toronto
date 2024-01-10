@@ -35,12 +35,12 @@
 
 		
 		{#each border.features as data}
-			<path d={path(data)} stroke="#1E3765" stroke-width=6 fill=none opacity=0.23/>
+			<path d={path(data)} stroke="#1E3765" stroke-width=1 fill=none opacity=0.23/>
 		{/each}
 
 		{#each hexVoronoi.features as data}
 			{#if data.properties.c === "l"}
-				<path d={path(data)} stroke="#fff" stroke-width=0.5 fill="#f0d5e4" opacity=0.7/>
+				<path d={path(data)} stroke="#b8b6b6" stroke-width=0.5 fill="#f0d5e4" opacity=0.7/>
 			{:else if data.properties.c === "m"}
 				<path d={path(data)} stroke="#fff" stroke-width=0.5 fill="#dd9ec1" opacity=0.7/>
 			{:else if data.properties.c === "h"}
@@ -55,7 +55,7 @@
 		{/each}
 
 		{#each border.features as data}
-			<path d={path(data)} stroke="#1E3765" stroke-width=1 fill=none opacity=0.8/>
+			<path d={path(data)} stroke="#1E3765" stroke-width=1 fill=none opacity=1/>
 		{/each}
 
 		{#each rinks.features as data}
@@ -76,7 +76,7 @@
 				y={projection(data.geometry.coordinates)[1]}
 				text-anchor="middle"
 				stroke="white"
-				stroke-width=2
+				stroke-width=2.5
 				font-size=12
 				opacity=0.7
 				>{data.properties.AREA_NAME}
@@ -128,9 +128,6 @@
 		width: 100%;
 		max-width: 600px;
 		min-width: 400px;
-		border-top: solid 1px var(--brandLightBlue);
-		border-bottom: solid 1px var(--brandLightBlue);
-
 	}
 	.rink{
 		stroke: var(--brandWhite);
