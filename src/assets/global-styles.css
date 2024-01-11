@@ -90,7 +90,7 @@ background-size: 52px 52px;
 
 .notes {
     background-color: none;
-    max-width: 1200px;
+    max-width: 750px;
     margin: 0 auto;
     position: relative;
     padding-top: 30px;
@@ -118,7 +118,7 @@ h2 {
 }
 
 h3 {
-    text-align: center;
+    text-align: left;
     font-family: TradeGothicBold;
     font-size: 18px;
     margin-top:20px;

@@ -32,6 +32,7 @@
 		<p>
 			Outdoor skating rinks in Toronto are quite popular, evidenced by <a href="https://www.cbc.ca/news/canada/toronto/reservations-toronto-artificial-ice-rinks-pandemic-lockdown-exercise-1.5826289">thousands of online reservations</a> due to limited spots during the COVID-19 pandemic and <a href="https://toronto.citynews.ca/2022/01/22/community-rallies-to-try-and-save-west-end-skating-rink/">public backlash when a rink closes</a>. Since they are free to use, they are generally an affordable option for winter activity (outside of the costs of buying or renting skates). Outdoor rinks also do not go unused during the warmer months; those with boards are often home to activities like lacrosse, pickle ball, and cycle polo; while skating trails are often used for roller skating or skateboarding.
 		</p>
+		<h2>Who has access?</h2>
 		<p>
 			While there are over 50 outdoor rinks in Toronto, there are large swaths of the City that do not live close to a rink and thus have to travel long distances to access them. To investigate how this varies across the City we have created a map showing the locations of outdoor skating rinks in Toronto, with the background of the map coloured by the time it takes to travel to the nearest outdoor skating rink. This is a type of <a href="https://en.wikipedia.org/wiki/Isochrone_map">isochrone map</a>, and it highlights which parts of the City have better or worse accessibility to outdoor skating rinks. 
 		</p>
@@ -145,12 +146,6 @@
 </main>
 
 <style>
-
-	.breakline {
-		width: 100%;
-		border-top: solid 1px var(--brandLightBlue);
-		height: 15px;
-	}
 	
 	.buttonMenu {
     font-family: RobotoBold;

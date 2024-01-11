@@ -167,11 +167,11 @@
 
     <svg width={innerWidth} height="60">
 
-        <text class="label" x="50" y="{10}" text-anchor="start">Average travel time to nearest rink ({demoGPs[demoGP]["barChartText"]}):</text>
+        <text class="label" x="5" y="{12}" text-anchor="start">Average travel time to nearest rink ({demoGPs[demoGP]["barChartText"]}):</text>
 
-        <text class="label legend" x="46" y="{28}" text-anchor="end">Walk</text>
-        <rect class="bar" width="{250 * demoGPs[demoGP]["walkTime"] / 40}" height = "8" x="50" y="{20}" style="fill: #6D247A; stroke: white;"></rect>
-        <text class="label legend" x="{53 + 250 * demoGPs[demoGP]["walkTime"] / 40}" y="{28}" text-anchor="start">{demoGPs[demoGP]["walkTime"]} minutes</text>
+        <text class="label legend" x="46" y="{30}" text-anchor="end">Walk</text>
+        <rect class="bar" width="{250 * demoGPs[demoGP]["walkTime"] / 40}" height = "8" x="50" y="{22}" style="fill: #6D247A; stroke: white;"></rect>
+        <text class="label legend" x="{53 + 250 * demoGPs[demoGP]["walkTime"] / 40}" y="{30}" text-anchor="start">{demoGPs[demoGP]["walkTime"]} minutes</text>
 
         <text class="label legend" x="46" y="{48}" text-anchor="end">Transit</text>
         <rect class="bar" width="{250 * demoGPs[demoGP]["transitTime"] / 40}" height = "8" x="50" y="{40}" style="fill: #6D247A; stroke: white;"></rect>
