@@ -62,7 +62,7 @@ main {
       #0000 0 calc(150%/13),#ffffff 0 calc(200%/13),
       #0000 0 calc(250%/13),#ffffff 0 calc(300%/13)),repeating-linear-gradient(-45deg,#0000 calc(-650%/13) calc(50%/13),#ffffff 0 calc(100%/13),
       #0000 0 calc(150%/13),#ffffff 0 calc(200%/13),
-      #0000 0 calc(250%/13),#ffffff 0 calc(300%/13)) 26px 26px #fbfdff;
+      #0000 0 calc(250%/13),#ffffff 0 calc(300%/13)) 26px 26px #fafdff;
 background-size: 52px 52px;
 
 
@@ -84,6 +84,16 @@ background-size: 52px 52px;
     max-width: 750px;
     margin: 0 auto;
     position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.notes {
+    background-color: none;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+    padding-top: 30px;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -110,8 +120,9 @@ h2 {
 h3 {
     text-align: left;
     font-family: TradeGothicBold;
-    font-size: 22px;
-    text-decoration: underline;
+    font-size: 18px;
+    margin-top:20px;
+    border-bottom: solid 1px var(--brandDarkBlue);
     color: var(--brandDarkBlue);
 }
 
@@ -123,9 +134,19 @@ p {
     line-height: 24px;
 }
 
+
+.notes p {
+    font-family: RobotoRegular;
+    color: var(--brandDarkBlue);
+    text-align: left;
+    font-size: 14px;
+    line-height: 20px;
+}
+
 .bold {
-    background-color: var(--brandPurple);
+    /* background-color: var(--brandPurple); */
     font-family: RobotoBold;
+    /* color: var(--brandPurple); */
 }
 
 .note {
@@ -134,20 +155,20 @@ p {
 }
 
 a {
-    color: var(--brandPink);
+    color: var(--brandDarkBlue);
     text-decoration: underline;
     font-family: RobotoBold;
 
 }
 a:hover {
-    color: var(--brandLightBlue);
+    color: var(--brandMedBlue);
 }
 
 .topImg {
     width: 100%;
     max-width: 1920px;
     height: calc(100vh - 20px);
-    max-height: calc(100vh / 1.333);
+    max-height: calc(100vh / 1.9);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
