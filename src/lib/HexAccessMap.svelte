@@ -369,12 +369,16 @@
 
 
 
+<p>Data Sources: OpenStreetMap, City of Toronto, Toronto Transit Commission</p>
 
-<div id="menu"></div>
 
 <div id="map" style="height: {mapHeight}px"></div>
 
-<p>Data Sources: OpenStreetMap, City of Toronto, Toronto Transit Commission</p>
+
+<div id="menu">
+<p id="menu-label">Select Travel Mode</p>
+</div>
+
 
 <style>
 	#map {
@@ -392,13 +396,23 @@
 		max-width: 1200px;
 		color: var(--brandMedBlue);
 	}
+	#menu-label {
+            font-family: RobotoBold;
+			margin: 0 auto;
+			text-align: center;
+            /* font-weight: 600; */
+            font-size: 16px;
+            color: var(--brandDarkBlue);
+            margin-bottom: 5px;
+			margin-top: 5px;
+        }
 	#menu {
 		margin: 0 auto;
 		margin-top: -10px;
 		max-width: 750px;
 		background: #fff;
 		position: relative;
-		padding-top: 5px;
+		margin-top: 5px;
 		padding-bottom: 5px;
 		/* display: inline-block; */
 		z-index: 1;

@@ -18,7 +18,7 @@
     ]
 </script>
 
-<span class="legend-title">{title1} </span>
+<p class="legend-title">{title1} </p>
 
 <svg width="250" height="30">
     <rect
@@ -95,11 +95,12 @@
     }
         
     .legend-title {
-            font-family: RobotoRegular;
+            font-family: RobotoBold;
             /* font-weight: 600; */
             font-size: 16px;
             color: var(--brandDarkBlue);
             margin-bottom: 0px;
             vertical-align: top;
+            padding-bottom: 4px;
         }
     </style>
