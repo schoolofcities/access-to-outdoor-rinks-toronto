@@ -369,15 +369,16 @@
 
 
 
+<div id="menu">
+	<p id="menu-label">Select Travel Mode</p>
+</div>
+	
+<div id="map" style="height: {mapHeight}px"></div>
+
 <p>Data Sources: OpenStreetMap, City of Toronto, Toronto Transit Commission</p>
 
 
-<div id="map" style="height: {mapHeight}px"></div>
 
-
-<div id="menu">
-<p id="menu-label">Select Travel Mode</p>
-</div>
 
 
 <style>
