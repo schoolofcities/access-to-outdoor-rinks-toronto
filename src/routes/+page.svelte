@@ -1,15 +1,16 @@
 <script>
 
+	import "../assets/global-styles.css";
 	import TopSofC from "../lib/TopSofC.svelte";
 	import HexAccessMap from "../lib/HexAccessMap.svelte";
-
-	import "../assets/global-styles.css";
 	import topImage from '../assets/top-image.png';
 	import Legend from "../lib/Legend.svelte";
 	import ChoroplethMap from "../lib/ChoroplethMap.svelte";
 	import VoronoiMap from "../lib/VoronoiMap.svelte";
 	
 </script>
+
+
 
 <TopSofC/>
 
@@ -110,7 +111,7 @@
 			A big thanks to <a href="https://www.linkedin.com/in/jwestreich/">Jared Westreich</a> and <a href="https://schoolofcities.utoronto.ca/people/felicity-heyworth/">Felicity Heyworth</a> for their thoughts, edits, and suggestions on this article.
 		</p>
 		<p>
-			The photo at the top of this page is of Christie Pits in 1923, and is sourced from the Toronto Archives. You can download the full original image <a href="./access-to-outdoor-rinks-toronto/torontoarchives_s0372_ss0052_it1097.jpg">here</a>.
+			The photo at the top of this page is of Christie Pits in 1923, and is sourced from the Toronto Archives. You can download the full original image <a href="./torontoarchives_s0372_ss0052_it1097.jpg">here</a>.
 		</p>
 
 		<h3>Data & methods</h3>
@@ -138,11 +139,11 @@
 <style>
 	
 	.buttonMenu {
-    font-family: RobotoBold;
-    text-align: center;
-	width: 100%;
-	display: block;
-}
+		font-family: RobotoBold;
+		text-align: center;
+		width: 100%;
+		display: block;
+	}
 
     /* Default styles for the container and divs */
     .mapGrid {
@@ -158,8 +159,6 @@
 		box-sizing: border-box;
 		margin-top: 10px;
 		margin-bottom: 20px;
-		/* border-top: solid 1px var(--brandLightBlue);
-		border-bottom: solid 1px var(--brandLightBlue); */
     }
 
     /* Media query for screens with a width greater than 1200px */
@@ -183,8 +182,6 @@
         min-width: 400px; /* Set a minimum width */
       }
     }
-
-
 
 </style>
 
