@@ -12,10 +12,7 @@
 	import subwayLines from '../assets/subway_lines.geo.json';
 	import busRoutes from '../assets/busPath.geo.json';
 	import mapStyle from '../assets/style.json';
-
-	console.log(mapStyle);
 	
-
 	let pageHeight;
 	let pageWidth;
 	let map;
@@ -335,16 +332,11 @@
 
 	});
 
-	
-
-
-
-
 </script>
 
+
+
 <svelte:window bind:innerHeight={pageHeight} bind:innerWidth={pageWidth}/>
-
-
 
 <div id="menu">
 	<p id="menu-label">Select Travel Mode</p>
@@ -353,8 +345,6 @@
 <div id="map" style="height: {mapHeight}px"></div>
 
 <p>Data Sources: OpenStreetMap, City of Toronto, Toronto Transit Commission</p>
-
-
 
 
 
@@ -375,15 +365,14 @@
 		color: var(--brandMedBlue);
 	}
 	#menu-label {
-            font-family: RobotoBold;
-			margin: 0 auto;
-			text-align: center;
-            /* font-weight: 600; */
-            font-size: 16px;
-            color: var(--brandDarkBlue);
-            margin-bottom: 5px;
-			margin-top: 5px;
-        }
+		font-family: RobotoBold;
+		margin: 0 auto;
+		text-align: center;
+		font-size: 16px;
+		color: var(--brandDarkBlue);
+		margin-bottom: 5px;
+		margin-top: 5px;
+	}
 	#menu {
 		margin: 0 auto;
 		margin-top: -10px;
@@ -392,7 +381,6 @@
 		position: relative;
 		margin-top: 5px;
 		padding-bottom: 5px;
-		/* display: inline-block; */
 		z-index: 1;
 		border-radius: 0px;
 		width: 100%;

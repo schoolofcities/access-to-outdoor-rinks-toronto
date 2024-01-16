@@ -14,8 +14,6 @@
 	$: innerWidth = divWidth;
 	$: height = innerWidth / 1.6;
 
-	$: console.log(divWidth);
-
 	$: projection = geoMercator()
 			//.center([-78.155 - 0.00239*innerWidth + 0.000001125*innerWidth**2, 43.545 + 0.00045*innerWidth - 1.8e-7*innerWidth**2])
 			.center([-79.188 + 0.24 * ((600 - innerWidth) / 200), 43.727 - 0.02 * ((600 - innerWidth) / 200) ])
@@ -25,9 +23,9 @@
 
 	let toRinks = rinks.features;
 
-
-
 </script>
+
+
 
 <div id="container" bind:offsetWidth={divWidth}>
 
@@ -91,11 +89,7 @@
 			</text>
 		{/each}
 
-
-
 		<text class="label" x="5" y="22">Total population in each outdoor rink's catchment area</text>
-		
-		
 
         <rect class="box" width="70" height = "16" x="145" y="35" style="fill:#ab1368; stroke: white;" opacity=0.7></rect>
 		<rect class="box" width="70" height = "16" x="75" y="35" style="fill:#dd9ec1; stroke: white;" opacity=0.7></rect>
@@ -115,11 +109,13 @@
             r="4"
             stroke="white"
             stroke-width="2"
-        fill="black"/>
+        	fill="black"
+		/>
 
 	</svg>
 
 </div>
+
 
 
 <style>

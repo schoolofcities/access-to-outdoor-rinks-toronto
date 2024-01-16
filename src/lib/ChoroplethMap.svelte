@@ -1,32 +1,14 @@
 <script>
 
     import { geoPath, geoMercator, scaleThreshold } from "d3"; 
-    import ctData from "../assets/ctData.geo.json"; //the census data by CT
+    import ctData from "../assets/ctData.geo.json"; 
     import rinks from "../assets/toronto-rinks.geo.json";
     import border from "../assets/toronto-former-municipal-boundaries.geo.json"
     import municipalPoints from '../assets/toronto-former-municipal-points.geo.json';
     
     var ledColours = ["#ede9fe", "#dad9f9", "#aaacd4", "#6e6d9f", "#383669"] 
-    // var ledColours = ["#975e86", "#bb8f90", "#dec09a", "#ffeea3"] // // // //
 
     export let demoGP;
-
-    const barData = [
-            {
-                mode: "Walk",
-                populationTime: 34.3,
-                LIncomeTime: 33.5,
-                ImmigrantTime: 37.0,
-                VMTime: 39.7,
-            },
-            {
-                mode: "Transit",
-                populationTime: 23.4,
-                LIncomeTime: 22.7,
-                ImmigrantTime: 24.5,
-                VMTime: 25.4,
-            }
-        ];
     
     const demoGPs = {
         "PopDen":{
@@ -71,8 +53,6 @@
 	$: innerWidth = divWidth;
 	$: height = innerWidth / 1.55;
 
-    $: console.log(divWidth);
-
     $: projection = geoMercator()
             .center([-79.188 + 0.24 * ((600 - innerWidth) / 200), 43.727 - 0.02 * ((600 - innerWidth) / 200) ])
             .scale([62000 * innerWidth / 600])
@@ -88,8 +68,9 @@
         :(item.properties["color_"+demoGP] = "white");
     }))
 
-
 </script>
+
+
 
 <div id="container" bind:offsetWidth={divWidth}>
 
@@ -161,8 +142,6 @@
         fill="black"/>
         <text class="label legend" x="186" y="41" text-anchor="left">Outdoor skating rink</text>
         
-
-
     </svg>
 
     <svg width={innerWidth} height="60">
@@ -180,6 +159,7 @@
     </svg>
 
 </div>
+
 
 
 <style>
