@@ -116,29 +116,6 @@
 					'fill-opacity': 1,
 				}
 			})
-
-			//layer - travel time by transit - weekend
-			map.addLayer({
-				'id': 'transitWeekend',
-				'type': 'fill',
-				'source': 'TravelTime',
-				'layout': {
-					visibility: 'none'
-				},
-				'paint': {
-					'fill-color': [
-						'step',
-						['get', 't'],
-						"#FF0000",
-						0, "#f1eef6",
-						15, '#bdc9e1',
-						30, '#74a9cf',
-						45, '#2b8cbe',
-						60, '#045a8d',
-					],
-					'fill-opacity': 1,
-				}
-			})
 			
 
 			map.addSource('notToronto', {
